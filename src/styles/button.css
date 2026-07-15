@@ -1,0 +1,102 @@
+@reference "tailwindcss";
+
+.btn {
+   @apply rounded-lg h-11 flex justify-center items-center text-[15px];
+
+   &.blue {
+      @apply bg-blue text-white font-medium;
+
+      &:hover {
+         @apply bg-blue;
+      }
+   }
+
+   &.black {
+      @apply bg-black text-white;
+   }
+}
+
+/* .outline-grey {
+   @apply text-grey font-semibold rounded-lg border-2 border-grey;
+} */
+
+.loader {
+   border: 5px solid transparent;
+   border-radius: 50%;
+   border-top: 5px solid green;
+   border-left: 5px solid green;
+   border-right: 5px solid green;
+   -webkit-animation: spin 0.4s linear infinite; /* Safari */
+   animation: spin 0.4s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+   0% {
+      -webkit-transform: rotate(0deg);
+   }
+   100% {
+      -webkit-transform: rotate(360deg);
+   }
+}
+
+@keyframes spin {
+   0% {
+      transform: rotate(0deg);
+   }
+   100% {
+      transform: rotate(360deg);
+   }
+}
+
+.loading {
+   border: 4px solid rgba(255, 255, 255, 0.3); /* Light tint */
+   border-top-color: var(--spinner-color);
+   border-right-color: var(--spinner-color);
+   border-radius: 50%;
+   width: 24px;
+   height: 24px;
+   animation: spin 0.5s linear infinite;
+}
+
+@keyframes loading {
+   0% {
+      transform: rotate(0deg);
+   }
+   100% {
+      transform: rotate(360deg);
+   }
+}
+
+/* Stand alone loading spinner */
+.loader1 {
+   width: 30px;
+   aspect-ratio: 1;
+   display: grid;
+   -webkit-mask: conic-gradient(from 15deg, #0000, #000);
+   animation: l26 1s infinite steps(12);
+}
+.loader1,
+.loader1:before,
+.loader1:after {
+   background:
+      radial-gradient(closest-side at 50% 12.5%, #b59745 96%, #0000) 50% 0/20%
+         80% repeat-y,
+      radial-gradient(closest-side at 12.5% 50%, #b59745 96%, #0000) 0 50%/80%
+         20% repeat-x;
+}
+.loader1:before,
+.loader1:after {
+   content: '';
+   grid-area: 1/1;
+   transform: rotate(30deg);
+}
+.loader1:after {
+   transform: rotate(60deg);
+}
+
+@keyframes l26 {
+   100% {
+      transform: rotate(1turn);
+   }
+}

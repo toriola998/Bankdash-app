@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import 'tailwindcss';
+
+@theme {
+   --breakpoint-500: 500px;
+   --color-white-glass: #ffffff99;
+   --color-black-glass: #00000040;
+   --color-black-glass-2: #2c2a2a4a;
+   --color-white-1: #fcfcfc;
+   --color-pale-red: #fcf7f7;
+   --color-pale-red-2: #e8e4e4;
+   --color-black-1: #181717;
+   --color-black-2: #121212;
+   --color-grey: #606062;
+   --color-grey-2: #cac2c3;
+
+   --color-blue: #0052cc;
+}
+@import './button.css';
+
+button {
+   cursor: pointer;
+}
+
+.flex-center {
+   @apply flex justify-center items-center;
+}
+
+.flex-items {
+   @apply flex items-center;
+}
+
+.flex-between {
+   @apply flex justify-between items-center;
+}
