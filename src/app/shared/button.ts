@@ -9,7 +9,7 @@ import { Component, input, output, computed } from '@angular/core';
       [class]="buttonClasses()"
       [type]="type()"
       [disabled]="disabled()"
-      (click)="action.emit()">
+      (click)="onClick()">
       @if (isLoading()) {
          <div
             class="btn-spinner w-5 h-5 rounded-full my-0 mx-auto border-[3px]
@@ -34,10 +34,16 @@ export class Button {
    isLoading = input<boolean>(false);
    text = input<string>('');
    disabled = input<boolean>(false);
-   type = input<'submit' | 'button'>('button');
+   type = input<'submit' | 'button'>('submit');
    customClass = input<string>('');
 
    action = output<void>();
+
+   onClick() {
+      if (this.type() === 'button') {
+         this.action.emit();
+      }
+   }
 
    buttonClasses = computed(() => {
       return [

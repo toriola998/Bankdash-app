@@ -1,0 +1,67 @@
+input {
+   outline: 0;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+   -webkit-appearance: none;
+   margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+   -moz-appearance: textfield;
+}
+
+.input-grid {
+   @apply flex flex-col sm:grid grid-cols-2 gap-5;
+}
+
+textarea {
+   @apply border;
+   &::placeholder {
+      @apply text-grey-2 text-sm;
+   }
+
+   &:focus {
+      @apply border border-grey outline-0;
+   }
+}
+
+input {
+   @apply border flex items-center w-full rounded-xl py-3 pl-4 text-sm mb-2;
+
+   input::placeholder {
+      @apply text-grey-2 text-sm;
+   }
+
+   &:focus-within {
+      @apply border border-blue;
+   }
+}
+
+/* input[type='checkbox'] {
+   accent-color: #0052cc;
+   @apply h-7 w-7;
+} */
+
+input[type='radio'] {
+   accent-color: #0052cc;
+   @apply h-5 w-5;
+}
+
+label {
+   @apply font-medium text-sm text-gray-700 mb-2;
+}
+
+.custom-file-input::-webkit-file-upload-button,
+.custom-file-input::-webkit-file-upload-button {
+   visibility: hidden;
+   display: none;
+}
+
+.custom-file-input {
+   color: rgba(0, 0, 0, 0);
+   display: contents;
+}

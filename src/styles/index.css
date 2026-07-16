@@ -18,6 +18,7 @@
    --color-blue: #0052cc;
 }
 @import './button.css';
+@import './input.css';
 
 button {
    cursor: pointer;
