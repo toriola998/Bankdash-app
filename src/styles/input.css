@@ -30,7 +30,7 @@ textarea {
 }
 
 input {
-   @apply border flex items-center w-full rounded-xl py-3 pl-4 text-sm mb-2;
+   @apply border flex items-center w-full rounded-xl py-3 pl-4 text-sm;
 
    input::placeholder {
       @apply text-grey-2 text-sm;
@@ -64,4 +64,8 @@ label {
 .custom-file-input {
    color: rgba(0, 0, 0, 0);
    display: contents;
+}
+
+input.ng-invalid.ng-touched {
+   @apply border-red-500;
 }

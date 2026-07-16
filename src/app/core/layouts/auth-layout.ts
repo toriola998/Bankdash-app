@@ -12,7 +12,8 @@ export interface AuthCta {
    imports: [RouterLink],
    standalone: true,
    template: `
-      <main class="hero-banner flex justify-center items-center p-6 ">
+      <main
+         class="hero-banner flex justify-center items-center p-6 bg-blend-darken">
          <div class="bg-white rounded-xl p-6 md:pb-10 md:w-[550px] mx-auto">
             <h1 class="text-center font-semibold text-2xl md:text-3xl ">
                {{ title() }}
