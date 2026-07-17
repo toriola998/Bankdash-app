@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { TransactionTable } from './components/transaction-table';
+import { PageLayout } from '../../core/layouts/page-layout/page-layout';
 
 @Component({
    selector: 'app-dashboard',
-   imports: [TransactionTable],
-   template: `<main class="bg-grey-3 min-h-screen pl-80">
+   imports: [TransactionTable, PageLayout],
+   template: ` <app-page-layout>
       <h1 class="text-2xl md:text-3xl font-semibold">Welcome Faidat</h1>
       <p class="mt-2 text-sm text-gray-700">
          Check all your activity with the quick online banking
@@ -36,7 +37,7 @@ import { TransactionTable } from './components/transaction-table';
 
          <app-transaction-table></app-transaction-table>
       </section>
-   </main>`,
+   </app-page-layout>`,
    styles: ``,
 })
 export default class Dashboard {}
