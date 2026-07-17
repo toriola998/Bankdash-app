@@ -11,4 +11,8 @@ export const routes: Routes = [
       path: 'signup',
       component: SignUp,
    },
+   {
+      path: 'dashboard',
+      loadComponent: () => import('./features/dashboard/dashboard'),
+   },
 ];

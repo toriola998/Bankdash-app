@@ -11,6 +11,14 @@
       }
    }
 
+   &.blue-2 {
+      @apply bg-blue-2 text-white font-medium;
+
+      &:hover {
+         @apply bg-blue;
+      }
+   }
+
    &.black {
       @apply bg-black text-white;
    }

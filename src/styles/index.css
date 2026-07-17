@@ -1,5 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-
 @import 'tailwindcss';
 
 @theme {
@@ -15,13 +14,18 @@
    --color-grey: #606062;
    --color-grey-2: #cac2c3;
 
+   --color-grey-3: #f6f6f7;
    --color-blue: #0052cc;
+   --color-blue-2: #01b8d8;
 }
+
 @import './button.css';
 @import './input.css';
+@import './table.css';
 
 button {
    cursor: pointer;
+   font-family: 'Inter', sans-serif;
 }
 
 .flex-center {
@@ -34,4 +38,8 @@ button {
 
 .flex-between {
    @apply flex justify-between items-center;
+}
+
+.card {
+   @apply bg-white rounded-xl;
 }
