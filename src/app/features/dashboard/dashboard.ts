@@ -1,33 +1,25 @@
 import { Component } from '@angular/core';
 import { TransactionTable } from './components/transaction-table';
 import { PageLayout } from '../../core/layouts/page-layout/page-layout';
+import { CardDetails } from '../../shared/card-details';
 
 @Component({
    selector: 'app-dashboard',
-   imports: [TransactionTable, PageLayout],
+   imports: [TransactionTable, PageLayout, CardDetails],
    template: ` <app-page-layout>
-      <h1 class="text-2xl md:text-3xl font-semibold">Welcome Faidat</h1>
-      <p class="mt-2 text-sm text-gray-700">
-         Check all your activity with the quick online banking
-      </p>
+      <div class="flex-between mb-5 font-semibold text-black-3">
+         <h2 class=" text-xl md:text-2xl ">My Cards</h2>
+         <a href="" class="">See All</a>
+      </div>
 
-      <div class="mt-5 flex flex-col gap-5 lg:grid grid-cols-[70%_auto]">
-         <div
-            class="card p-8 flex flex-col gap-8 500:flex-row sm:items-center justify-between">
-            <div>
-               <p class="text-sm text-gray-700 font-medium">Current Balance</p>
-               <p class="font-semibold text-4xl mt-2">$57,879.89</p>
-            </div>
+      <div class="flex flex-col md:grid grid-cols-2 gap-8">
+         <app-card-details
+            variant="blue"
+            [cardDetails]="cardDetails"></app-card-details>
 
-            <button class="btn blue-2 !rounded-full px-16 w-fit">
-               View details
-            </button>
-         </div>
-
-         <div class="card p-8">
-            <p class="text-sm text-gray-700 font-medium">Account Type</p>
-            <p class="font-semibold text-4xl mt-2">Savings</p>
-         </div>
+         <app-card-details
+            variant="light"
+            [cardDetails]="cardDetails2"></app-card-details>
       </div>
 
       <section>
@@ -38,6 +30,26 @@ import { PageLayout } from '../../core/layouts/page-layout/page-layout';
          <app-transaction-table></app-transaction-table>
       </section>
    </app-page-layout>`,
-   styles: ``,
+   styles: `
+      ::ng-deep .blue-card {
+         background: linear-gradient(107.38deg, #4c49ed 2.61%, #0a06f4 101.2%);
+      }
+   `,
 })
-export default class Dashboard {}
+export default class Dashboard {
+   cardDetails = {
+      date: '12/22',
+      name: 'Hola',
+      balance: '$12.00',
+      cardUrl: '/icons/chip-card.svg',
+      masterCardUrl: '/icons/mastercard-white.svg',
+   };
+
+   cardDetails2 = {
+      date: '12/22',
+      name: 'Hola',
+      balance: '$12.00',
+      cardUrl: '/icons/chip-card-grey.svg',
+      masterCardUrl: '/icons/mastercard-grey.svg',
+   };
+}

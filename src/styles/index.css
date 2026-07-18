@@ -11,12 +11,16 @@
    --color-pale-red-2: #e8e4e4;
    --color-black-1: #181717;
    --color-black-2: #121212;
+   --color-black-3: #343c6a;
    --color-grey: #606062;
    --color-grey-2: #cac2c3;
+   --color-grey-3: #dfeaf2;
 
    --color-grey-3: #f6f6f7;
    --color-blue: #0052cc;
+   --color-blue-1: #718ebf;
    --color-blue-2: #01b8d8;
+   --color-blue-3: #0a06f4;
 }
 
 @import './button.css';
