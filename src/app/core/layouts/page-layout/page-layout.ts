@@ -9,7 +9,7 @@ import { SideNav } from './components/side-nav';
       <app-side-nav> </app-side-nav>
 
       <main
-         class="w-full p-6 pb-20 xl:px-12 max-w-[1600px] min-h-screen overflow-auto 2xl:mx-auto bg-grey-3">
+         class="w-full p-6 pb-20 xl:px-12 max-w-[1600px] min-h-screen overflow-auto 2xl:mx-auto bg-grey-5">
          <!-- Desktop title and user info -->
          <div class="justify-between w-full hidden lg:flex">
             <h1 class="page-title">{{ title() }}</h1>

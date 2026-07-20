@@ -2,24 +2,30 @@ import { Component } from '@angular/core';
 import { TransactionTable } from './components/transaction-table';
 import { PageLayout } from '../../core/layouts/page-layout/page-layout';
 import { CardDetails } from '../../shared/card-details';
+import { RecentTransactions } from './components/recent-transactions';
 
 @Component({
    selector: 'app-dashboard',
-   imports: [TransactionTable, PageLayout, CardDetails],
+   imports: [TransactionTable, PageLayout, CardDetails, RecentTransactions],
    template: ` <app-page-layout>
-      <div class="flex-between mb-5 font-semibold text-black-3">
-         <h2 class=" text-xl md:text-2xl ">My Cards</h2>
-         <a href="" class="">See All</a>
-      </div>
+      <div class="flex flex-col xl:grid grid-cols-[65%_auto] gap-8">
+         <div>
+            <div class="flex-between mb-5 font-semibold text-black-3">
+               <h2 class="page-title">My Cards</h2>
+               <a href="" class="">See All</a>
+            </div>
 
-      <div class="flex flex-col md:grid grid-cols-2 gap-8">
-         <app-card-details
-            variant="blue"
-            [cardDetails]="cardDetails"></app-card-details>
+            <div class="flex flex-col md:grid grid-cols-2 gap-8">
+               <app-card-details
+                  variant="blue"
+                  [cardDetails]="cardDetails"></app-card-details>
 
-         <app-card-details
-            variant="light"
-            [cardDetails]="cardDetails2"></app-card-details>
+               <app-card-details
+                  variant="light"
+                  [cardDetails]="cardDetails2"></app-card-details>
+            </div>
+         </div>
+         <app-recent-transactions></app-recent-transactions>
       </div>
 
       <section>

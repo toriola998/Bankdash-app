@@ -15,12 +15,17 @@
    --color-grey: #606062;
    --color-grey-2: #cac2c3;
    --color-grey-3: #dfeaf2;
-
-   --color-grey-3: #f6f6f7;
+   --color-grey-4: #f6f6f7;
+   --color-grey-5: #F5F7FA;
    --color-blue: #0052cc;
    --color-blue-1: #718ebf;
    --color-blue-2: #01b8d8;
    --color-blue-3: #0a06f4;
+   --color-blue-4: #e7edff;
+   --color-red: #ff4b4a;
+   --color-green: #41d4a8;
+   --color-green-1: #dcfaf8;
+   --color-yellow: #fff5d9;
 }
 
 @import './button.css';
@@ -45,11 +50,15 @@ button {
 }
 
 .card {
-   @apply bg-white rounded-xl;
+   @apply bg-white rounded-3xl;
 }
 
 h1.page-title {
    @apply font-semibold text-gray-700 text-xl md:text-2xl mb-5 lg:mb-10;
+}
+
+.page-title {
+   @apply text-xl md:text-2xl font-semibold text-black-3;
 }
 
 a.active-link {
