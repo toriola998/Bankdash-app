@@ -7,7 +7,7 @@ import {
    ApexLegend,
    ApexResponsive,
    ApexDataLabels,
-   NgApexchartsModule,
+   ChartComponent,
 } from 'ng-apexcharts';
 
 export type ChartOptions = {
@@ -25,7 +25,7 @@ export type ChartOptions = {
 @Component({
    selector: 'app-expense-statistics',
    standalone: true,
-   imports: [NgApexchartsModule],
+   imports: [ChartComponent],
    template: `
       <div id="chart" class="card px-4 sm:py-8">
          <apx-chart
