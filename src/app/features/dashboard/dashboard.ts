@@ -3,10 +3,17 @@ import { PageLayout } from '../../core/layouts/page-layout/page-layout';
 import { CardDetails } from '../../shared/card-details';
 import { RecentTransactions } from './components/recent-transactions';
 import { WeeklyActivities } from './components/weekly-activities';
+import { ExpenseStatistics } from './components/expense-statistics';
 
 @Component({
    selector: 'app-dashboard',
-   imports: [PageLayout, CardDetails, RecentTransactions, WeeklyActivities],
+   imports: [
+      PageLayout,
+      CardDetails,
+      RecentTransactions,
+      WeeklyActivities,
+      ExpenseStatistics,
+   ],
    template: ` <app-page-layout>
       <div class="flex flex-col xl:grid grid-cols-[65%_auto] gap-8">
          <div>
@@ -28,11 +35,17 @@ import { WeeklyActivities } from './components/weekly-activities';
          <app-recent-transactions></app-recent-transactions>
       </div>
 
-      <section>
-         <h2 class="page-title my-5">Weekly Activity</h2>
+      <div class="flex flex-col xl:grid grid-cols-[65%_auto] gap-8">
+         <section>
+            <h2 class="page-title my-5">Weekly Activity</h2>
+            <app-weekly-activities></app-weekly-activities>
+         </section>
 
-         <app-weekly-activities></app-weekly-activities>
-      </section>
+         <section>
+            <h2 class="page-title my-5">Expense statistics</h2>
+            <app-expense-statistics></app-expense-statistics>
+         </section>
+      </div>
    </app-page-layout>`,
    styles: `
       ::ng-deep .blue-card {

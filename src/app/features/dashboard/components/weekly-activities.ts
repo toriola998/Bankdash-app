@@ -30,7 +30,7 @@ export type ChartOptions = {
    standalone: true,
    imports: [ChartComponent],
    template: `
-      <div id="chart" class="card px-4 sm:p-8">
+      <div id="chart" class="card p-4 sm:px-8">
          <apx-chart
             [series]="chartOptions.series"
             [chart]="chartOptions.chart"
@@ -60,12 +60,12 @@ export class WeeklyActivities {
       ],
       chart: {
          type: 'bar',
-         height: 350,
+         height: 320,
       },
       plotOptions: {
          bar: {
             horizontal: false,
-            columnWidth: '20%',
+            columnWidth: '35%',
             borderRadius: 8,
             borderRadiusApplication: 'around',
          },
