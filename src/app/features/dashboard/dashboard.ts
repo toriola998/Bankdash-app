@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { TransactionTable } from './components/transaction-table';
 import { PageLayout } from '../../core/layouts/page-layout/page-layout';
 import { CardDetails } from '../../shared/card-details';
 import { RecentTransactions } from './components/recent-transactions';
+import { WeeklyActivities } from './components/weekly-activities';
 
 @Component({
    selector: 'app-dashboard',
-   imports: [TransactionTable, PageLayout, CardDetails, RecentTransactions],
+   imports: [PageLayout, CardDetails, RecentTransactions, WeeklyActivities],
    template: ` <app-page-layout>
       <div class="flex flex-col xl:grid grid-cols-[65%_auto] gap-8">
          <div>
@@ -29,11 +29,9 @@ import { RecentTransactions } from './components/recent-transactions';
       </div>
 
       <section>
-         <h2 class="text-xl md:text-2xl font-semibold mt-10 mb-5">
-            Transaction History
-         </h2>
+         <h2 class="page-title my-5">Weekly Activity</h2>
 
-         <app-transaction-table></app-transaction-table>
+         <app-weekly-activities></app-weekly-activities>
       </section>
    </app-page-layout>`,
    styles: `
