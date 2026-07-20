@@ -4,6 +4,7 @@ import { CardDetails } from '../../shared/card-details';
 import { RecentTransactions } from './components/recent-transactions';
 import { WeeklyActivities } from './components/weekly-activities';
 import { ExpenseStatistics } from './components/expense-statistics';
+import { BalanceHistory } from './components/balance-history';
 
 @Component({
    selector: 'app-dashboard',
@@ -13,6 +14,7 @@ import { ExpenseStatistics } from './components/expense-statistics';
       RecentTransactions,
       WeeklyActivities,
       ExpenseStatistics,
+      BalanceHistory,
    ],
    template: ` <app-page-layout>
       <div class="flex flex-col xl:grid grid-cols-[65%_auto] gap-8">
@@ -46,6 +48,11 @@ import { ExpenseStatistics } from './components/expense-statistics';
             <app-expense-statistics></app-expense-statistics>
          </section>
       </div>
+
+      <section>
+         <h2 class="page-title my-5">Balance History</h2>
+         <app-balance-history></app-balance-history>
+      </section>
    </app-page-layout>`,
    styles: `
       ::ng-deep .blue-card {
