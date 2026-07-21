@@ -1,11 +1,15 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, inject } from '@angular/core';
 import { AmountInputDirective } from '../../../shared/directives/amount-input';
+import { ModalService } from '../../../shared/services/modal';
+import { CurrencyPipe } from '@angular/common';
+import { ParseAmountPipe } from '../../../shared/pipes/parse-amount-pipe';
 import {
    FormControl,
    ReactiveFormsModule,
    Validators,
    FormGroup,
 } from '@angular/forms';
+import { Modal } from '../../../shared/ui/modal';
 
 interface Beneficiary {
    id: number;
@@ -16,7 +20,13 @@ interface Beneficiary {
 
 @Component({
    selector: 'app-quick-transfer',
-   imports: [AmountInputDirective, ReactiveFormsModule],
+   imports: [
+      AmountInputDirective,
+      ReactiveFormsModule,
+      Modal,
+      CurrencyPipe,
+      ParseAmountPipe,
+   ],
    standalone: true,
    template: `
       <div class="card p-4 sm:p-8">
@@ -86,6 +96,39 @@ interface Beneficiary {
             </form>
          </div>
       </div>
+
+      <!----******** CONFRIMATION SCREEN***********---->
+      @if (modal.isOpen()) {
+         <app-modal
+            title="Quick Transfer"
+            subText="You're about to make a transfer to..."
+            (closeModal)="modal.close()">
+            <div class="flex-center gap-x-3">
+               <img
+                  [src]="activeBeneficiary()?.image"
+                  alt=""
+                  class="rounded-full h-20 w-20" />
+               <div>
+                  <p class="text-lg font-medium">
+                     {{ activeBeneficiary()?.name }}
+                  </p>
+                  <p class="text-blue-1 font-medium text-[15px] ">
+                     {{ activeBeneficiary()?.role }}
+                  </p>
+               </div>
+            </div>
+
+            <div class="my-10">
+               <p class="text-center text-grey text-sm">Amount</p>
+               <p class="text-xl md:text-2xl text-center font-semibold ">
+                  {{ amountForm.value.amount | parseAmount | currency: 'NGN' }}
+               </p>
+            </div>
+            <p class="text-grey mt-5">
+               Enter your transaction PIN to confirm transaction
+            </p>
+         </app-modal>
+      }
    `,
    styles: `
       .more {
@@ -94,6 +137,12 @@ interface Beneficiary {
    `,
 })
 export class QuickTransfer {
+   modal = inject(ModalService);
+
+   // close_modal() {
+
+   // }
+
    amountForm = new FormGroup({
       amount: new FormControl<string>('', {
          nonNullable: true,
@@ -102,13 +151,13 @@ export class QuickTransfer {
    });
 
    onSubmit() {
-      console.log('submitted');
-
       if (this.amountForm.invalid) {
          this.amountForm.markAllAsTouched();
          return;
       }
       console.log(this.amountForm.value.amount, 'value');
+      console.log(this.amountForm.controls.amount.value);
+      this.modal.open();
    }
 
    beneficiaryList: Beneficiary[] = [
