@@ -44,7 +44,6 @@ interface Beneficiary {
             <label class="!text-blue-1 sm:w-36" for="amount"
                >Write amount</label
             >
-
             <form
                [formGroup]="amountForm"
                (ngSubmit)="onSubmit()"

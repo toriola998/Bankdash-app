@@ -35,11 +35,11 @@ export class BalanceHistory {
       series: [
          {
             name: 'Balance',
-            data: [31, 40, 28, 51, 42, 109, 100],
+            data: [31, 150, 28, 51, 42, 109, 100],
          },
       ],
       chart: {
-         height: 250,
+         height: 230,
          type: 'area',
       },
       colors: ['#1814F3'],
