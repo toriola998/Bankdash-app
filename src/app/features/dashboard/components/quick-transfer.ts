@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { AmountInputDirective } from '../../../shared/directives/amount-input';
 import {
    FormControl,
@@ -21,14 +21,21 @@ interface Beneficiary {
    template: `
       <div class="card p-4 sm:p-8">
          <div class="flex-items gap-x-8">
-            <ul class="flex gap-x-7">
+            <ul class="flex gap-x-2">
                @for (item of beneficiaryList; track item.id) {
-                  <li>
+                  <li
+                     (click)="getBeneficiary(item)"
+                     class="px-1 py-1 cursor-pointer"
+                     [class]="
+                        activeBeneficiary()?.id === item.id
+                           ? 'border-2 border-blue rounded-2xl'
+                           : ''
+                     ">
                      <img
                         [src]="item.image"
                         alt=""
                         class="rounded-full h-18 w-18 mx-auto block" />
-                     <p class="text-center  mt-4 mb-2">{{ item.name }}</p>
+                     <p class="text-center mt-3">{{ item.name }}</p>
                      <p class="text-blue-1 text-center text-[15px]">
                         {{ item.role }}
                      </p>
@@ -49,7 +56,7 @@ interface Beneficiary {
                (ngSubmit)="onSubmit()"
                class="w-full">
                <div class="relative flex-items h-12.5 pr-0.5 w-full">
-                  <div class="relative">
+                  <div class="relative w-full">
                      <input
                         appAmountInput
                         id="amount"
@@ -124,4 +131,11 @@ export class QuickTransfer {
          image: '/images/users/workman.svg',
       },
    ];
+
+   activeBeneficiary = signal<Beneficiary | null>(this.beneficiaryList[0]);
+
+   getBeneficiary(item: Beneficiary) {
+      console.log(item);
+      this.activeBeneficiary.set(item);
+   }
 }
