@@ -1,4 +1,11 @@
 import { Component } from '@angular/core';
+import { AmountInputDirective } from '../../../shared/directives/amount-input';
+import {
+   FormControl,
+   ReactiveFormsModule,
+   Validators,
+   FormGroup,
+} from '@angular/forms';
 
 interface Beneficiary {
    id: number;
@@ -9,7 +16,7 @@ interface Beneficiary {
 
 @Component({
    selector: 'app-quick-transfer',
-   imports: [],
+   imports: [AmountInputDirective, ReactiveFormsModule],
    standalone: true,
    template: `
       <div class="card p-4 sm:p-8">
@@ -38,20 +45,39 @@ interface Beneficiary {
                >Write amount</label
             >
 
-            <div class="relative flex-items h-12.5 pr-0.5 w-full">
-               <input
-                  id="amount"
-                  type="text"
-                  formControlName="amount"
-                  placeholder="525.00"
-                  class="!border-0 bg-grey-6 !rounded-full w-full" />
+            <form
+               [formGroup]="amountForm"
+               (ngSubmit)="onSubmit()"
+               class="w-full">
+               <div class="relative flex-items h-12.5 pr-0.5 w-full">
+                  <div class="relative">
+                     <input
+                        appAmountInput
+                        id="amount"
+                        type="text"
+                        formControlName="amount"
+                        placeholder="525.00"
+                        class="!border-0 bg-grey-6 !rounded-full w-full" />
 
-               <button
-                  class="btn blue !rounded-full h-12.5 px-6 flex-items gap-x-3 absolute right-0">
-                  Send
-                  <img src="/icons/send.svg" alt="" />
-               </button>
-            </div>
+                     @if (
+                        amountForm.controls.amount.invalid &&
+                        amountForm.controls.amount.touched
+                     ) {
+                        <p
+                           class="text-red-600 text-[13px] absolute top-12 left-5">
+                           Amount is required
+                        </p>
+                     }
+                  </div>
+
+                  <button
+                     type="submit"
+                     class="btn blue !rounded-full h-12.5 px-6 flex-items gap-x-3 absolute right-0">
+                     Send
+                     <img src="/icons/send.svg" alt="" />
+                  </button>
+               </div>
+            </form>
          </div>
       </div>
    `,
@@ -62,6 +88,23 @@ interface Beneficiary {
    `,
 })
 export class QuickTransfer {
+   amountForm = new FormGroup({
+      amount: new FormControl<string>('', {
+         nonNullable: true,
+         validators: [Validators.required],
+      }),
+   });
+
+   onSubmit() {
+      console.log('submitted');
+
+      if (this.amountForm.invalid) {
+         this.amountForm.markAllAsTouched();
+         return;
+      }
+      console.log(this.amountForm.value.amount, 'value');
+   }
+
    beneficiaryList: Beneficiary[] = [
       {
          id: 0,

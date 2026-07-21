@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Button } from '../../shared/button';
-import { FormField } from '../../shared/form-field';
+import { Button } from '../../shared/ui/button';
+import { FormField } from '../../shared/ui/form-field';
 import { AuthLayout, AuthCta } from '../../core/layouts/auth-layout';
 import {
    FormGroup,
