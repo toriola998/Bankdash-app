@@ -4,10 +4,10 @@
    @apply rounded-lg h-11 flex justify-center items-center text-[15px];
 
    &.blue {
-      @apply bg-blue text-white font-medium;
+      @apply bg-blue-5 text-white font-medium;
 
       &:hover {
-         @apply bg-blue;
+         @apply bg-blue-5;
       }
    }
 

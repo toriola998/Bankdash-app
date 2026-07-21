@@ -39,7 +39,7 @@ export class BalanceHistory {
          },
       ],
       chart: {
-         height: 350,
+         height: 250,
          type: 'area',
       },
       colors: ['#1814F3'],

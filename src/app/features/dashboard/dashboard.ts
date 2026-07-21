@@ -5,6 +5,7 @@ import { RecentTransactions } from './components/recent-transactions';
 import { WeeklyActivities } from './components/weekly-activities';
 import { ExpenseStatistics } from './components/expense-statistics';
 import { BalanceHistory } from './components/balance-history';
+import { QuickTransfer } from './components/quick-transfer';
 
 @Component({
    selector: 'app-dashboard',
@@ -15,6 +16,7 @@ import { BalanceHistory } from './components/balance-history';
       WeeklyActivities,
       ExpenseStatistics,
       BalanceHistory,
+      QuickTransfer,
    ],
    template: ` <app-page-layout>
       <div class="flex flex-col xl:grid grid-cols-[65%_auto] gap-8">
@@ -49,10 +51,16 @@ import { BalanceHistory } from './components/balance-history';
          </section>
       </div>
 
-      <section>
-         <h2 class="page-title my-5">Balance History</h2>
-         <app-balance-history></app-balance-history>
-      </section>
+      <div class="flex flex-col xl:grid grid-cols-[auto_60%] gap-8">
+         <section>
+            <h2 class="page-title my-5">Quick Transfer</h2>
+            <app-quick-transfer></app-quick-transfer>
+         </section>
+         <section>
+            <h2 class="page-title my-5">Balance History</h2>
+            <app-balance-history></app-balance-history>
+         </section>
+      </div>
    </app-page-layout>`,
    styles: `
       ::ng-deep .blue-card {
