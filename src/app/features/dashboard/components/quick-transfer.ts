@@ -1,8 +1,6 @@
 import { Component, signal, inject } from '@angular/core';
 import { AmountInputDirective } from '../../../shared/directives/amount-input';
 import { ModalService } from '../../../shared/services/modal';
-import { CurrencyPipe } from '@angular/common';
-import { ParseAmountPipe } from '../../../shared/pipes/parse-amount-pipe';
 import {
    FormControl,
    ReactiveFormsModule,
@@ -10,6 +8,7 @@ import {
    FormGroup,
 } from '@angular/forms';
 import { Modal } from '../../../shared/ui/modal';
+import { TransferConfirmation } from './quick-transfer/transfer-confirmation';
 
 interface Beneficiary {
    id: number;
@@ -24,8 +23,7 @@ interface Beneficiary {
       AmountInputDirective,
       ReactiveFormsModule,
       Modal,
-      CurrencyPipe,
-      ParseAmountPipe,
+      TransferConfirmation,
    ],
    standalone: true,
    template: `
@@ -103,30 +101,11 @@ interface Beneficiary {
             title="Quick Transfer"
             subText="You're about to make a transfer to..."
             (closeModal)="modal.close()">
-            <div class="flex-center gap-x-3">
-               <img
-                  [src]="activeBeneficiary()?.image"
-                  alt=""
-                  class="rounded-full h-20 w-20" />
-               <div>
-                  <p class="text-lg font-medium">
-                     {{ activeBeneficiary()?.name }}
-                  </p>
-                  <p class="text-blue-1 font-medium text-[15px] ">
-                     {{ activeBeneficiary()?.role }}
-                  </p>
-               </div>
-            </div>
-
-            <div class="my-10">
-               <p class="text-center text-grey text-sm">Amount</p>
-               <p class="text-xl md:text-2xl text-center font-semibold ">
-                  {{ amountForm.value.amount | parseAmount | currency: 'NGN' }}
-               </p>
-            </div>
-            <p class="text-grey mt-5">
-               Enter your transaction PIN to confirm transaction
-            </p>
+            <app-transfer-confirmation
+               [activeBeneficiary]="activeBeneficiary()"
+               [amountValue]="
+                  amountForm.value.amount
+               "></app-transfer-confirmation>
          </app-modal>
       }
    `,
@@ -138,10 +117,6 @@ interface Beneficiary {
 })
 export class QuickTransfer {
    modal = inject(ModalService);
-
-   // close_modal() {
-
-   // }
 
    amountForm = new FormGroup({
       amount: new FormControl<string>('', {
@@ -181,7 +156,7 @@ export class QuickTransfer {
       },
    ];
 
-   activeBeneficiary = signal<Beneficiary | null>(this.beneficiaryList[0]);
+   activeBeneficiary = signal<Beneficiary>(this.beneficiaryList[0]);
 
    getBeneficiary(item: Beneficiary) {
       console.log(item);
