@@ -5,7 +5,7 @@ import { RecentTransactions } from './components/recent-transactions';
 import { WeeklyActivities } from './components/weekly-activities';
 import { ExpenseStatistics } from './components/expense-statistics';
 import { BalanceHistory } from './components/balance-history';
-import { QuickTransfer } from './components/quick-transfer';
+import { QuickTransfer } from './components/quick-transfer/quick-transfer';
 
 @Component({
    selector: 'app-dashboard',

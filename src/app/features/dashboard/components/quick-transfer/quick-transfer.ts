@@ -1,14 +1,14 @@
 import { Component, signal, inject } from '@angular/core';
-import { AmountInputDirective } from '../../../shared/directives/amount-input';
-import { ModalService } from '../../../shared/services/modal';
+import { AmountInputDirective } from '../../../../shared/directives/amount-input';
+import { ModalService } from '../../../../shared/services/modal';
 import {
    FormControl,
    ReactiveFormsModule,
    Validators,
    FormGroup,
 } from '@angular/forms';
-import { Modal } from '../../../shared/ui/modal';
-import { TransferConfirmation } from './quick-transfer/transfer-confirmation';
+import { Modal } from '../../../../shared/ui/modal';
+import { TransferConfirmation } from './transfer-confirmation';
 
 interface Beneficiary {
    id: number;
