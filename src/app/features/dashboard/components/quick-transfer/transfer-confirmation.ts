@@ -1,8 +1,11 @@
-import { Component, input } from '@angular/core';
+import { Component, input, signal, inject } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { NgxOtpInputComponent, OtpStatus } from 'ngx-otp-input';
 import { ParseAmountPipe } from '../../../../shared/pipes/parse-amount-pipe';
+import { LoadingSpinner } from '../../../../shared/ui/loading-spinner';
+import { ModalService } from '../../../../shared/services/modal';
+import { Modal } from '../../../../shared/ui/modal';
 
 interface ActiveBeneficiary {
    id: number;
@@ -18,6 +21,8 @@ interface ActiveBeneficiary {
       CurrencyPipe,
       ReactiveFormsModule,
       NgxOtpInputComponent,
+      LoadingSpinner,
+      Modal,
    ],
    standalone: true,
    template: `<div class="flex-center gap-x-3">
@@ -51,13 +56,39 @@ interface ActiveBeneficiary {
             [length]="6"
             [status]="status"
             (otpComplete)="verifyOtp($event)"></ngx-otp-input>
-      </form> `,
+      </form>
+
+      @if (showLoader()) {
+         <app-loading-spinner></app-loading-spinner>
+      }
+
+      @if (showSuccess()) {
+         <app-modal
+            title="Succcessful!"
+            (closeModal)="modal.close()"
+            customClass="w-100">
+            <img
+               src="/images/check-blue.png"
+               alt=""
+               class="mx-auto w-16 h-16 opacity-85" />
+            <p class="text-center mt-2 mx-auto w-60">
+               You have succcessfully completed your transfer!
+            </p>
+            <button class="btn blue w-full mt-10" (click)="modal.close()">
+               Okay
+            </button>
+         </app-modal>
+      } `,
 
    styles: ``,
 })
 export class TransferConfirmation {
+   showLoader = signal<boolean>(false);
+   showSuccess = signal<boolean>(false);
    activeBeneficiary = input<ActiveBeneficiary>();
    amountValue = input<string>();
+
+   modal = inject(ModalService);
 
    status: OtpStatus = 'idle';
 
