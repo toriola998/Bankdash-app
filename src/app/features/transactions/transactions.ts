@@ -3,12 +3,21 @@ import { PageLayout } from '../../core/layouts/page-layout/page-layout';
 import { CardDetails } from '../../shared/ui/card-details';
 import { Expenses } from './components/expenses';
 import { RecentTransactionTable } from './components/recent-transaction-table';
-import {BrowserModule} from '@angular/platform-browser';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { Modal } from '../../shared/ui/modal';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { AddCard } from './components/add-card';
 
 @Component({
    selector: 'app-transactions',
-   imports: [PageLayout, CardDetails, Expenses, RecentTransactionTable, NgxPaginationModule],
+   imports: [
+      PageLayout,
+      CardDetails,
+      Expenses,
+      RecentTransactionTable,
+      Modal,
+      NgxPaginationModule,
+      AddCard,
+   ],
    template: `
       <app-page-layout>
          <div class="flex flex-col xl:grid grid-cols-[65%_auto] gap-8">
@@ -39,8 +48,13 @@ import {NgxPaginationModule} from 'ngx-pagination';
             <h2 class="page-title my-5">Recent Transactions</h2>
 
             <app-recent-transaction-table></app-recent-transaction-table>
-            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            <pagination-controls
+               (pageChange)="p = $event"></pagination-controls>
          </section>
+
+         <app-modal title="Add Card" subText="Enter the details of your card">
+            <app-add-card></app-add-card>
+         </app-modal>
       </app-page-layout>
    `,
    styles: ``,
@@ -62,6 +76,6 @@ export class Transactions {
       masterCardUrl: '/icons/mastercard-grey.svg',
    };
 
-    p: number = 1;
-    collection: any[] = ['Hello', 'World'];
+   p: number = 1;
+   collection: any[] = ['Hello', 'World'];
 }
