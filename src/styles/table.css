@@ -2,7 +2,7 @@
    @apply overflow-x-scroll max-w-full rounded-2xl;
 
    .table-row {
-      @apply h-20 border-t-6 border-grey-3 cursor-pointer px-6;
+      @apply h-16 border-t-1 border-grey-7 px-6;
    }
    thead {
       @apply h-16 bg-white;
@@ -10,7 +10,7 @@
       display: table-header-group;
 
       th {
-         @apply text-sm font-medium text-gray-800;
+         @apply text-sm font-medium text-blue-1;
       }
    }
 

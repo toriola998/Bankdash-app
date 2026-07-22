@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { PageLayout } from '../../core/layouts/page-layout/page-layout';
 import { CardDetails } from '../../shared/ui/card-details';
 import { Expenses } from './components/expenses';
+import { RecentTransactionTable } from './components/recent-transaction-table';
 
 @Component({
    selector: 'app-transactions',
-   imports: [PageLayout, CardDetails, Expenses],
+   imports: [PageLayout, CardDetails, Expenses, RecentTransactionTable],
    template: `
       <app-page-layout>
          <div class="flex flex-col xl:grid grid-cols-[65%_auto] gap-8">
@@ -31,6 +32,12 @@ import { Expenses } from './components/expenses';
                <app-expenses></app-expenses>
             </section>
          </div>
+
+         <section>
+            <h2 class="page-title my-5">Recent Transactions</h2>
+
+            <app-recent-transaction-table></app-recent-transaction-table>
+         </section>
       </app-page-layout>
    `,
    styles: ``,
