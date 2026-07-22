@@ -23,6 +23,7 @@
     "apexcharts": "^5.16.0",
     "ng-apexcharts": "^2.4.0",
     "ngx-otp-input": "^2.0.0",
+    "ngx-pagination": "^6.0.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },

@@ -3,10 +3,12 @@ import { PageLayout } from '../../core/layouts/page-layout/page-layout';
 import { CardDetails } from '../../shared/ui/card-details';
 import { Expenses } from './components/expenses';
 import { RecentTransactionTable } from './components/recent-transaction-table';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @Component({
    selector: 'app-transactions',
-   imports: [PageLayout, CardDetails, Expenses, RecentTransactionTable],
+   imports: [PageLayout, CardDetails, Expenses, RecentTransactionTable, NgxPaginationModule],
    template: `
       <app-page-layout>
          <div class="flex flex-col xl:grid grid-cols-[65%_auto] gap-8">
@@ -37,6 +39,7 @@ import { RecentTransactionTable } from './components/recent-transaction-table';
             <h2 class="page-title my-5">Recent Transactions</h2>
 
             <app-recent-transaction-table></app-recent-transaction-table>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
          </section>
       </app-page-layout>
    `,
@@ -58,4 +61,7 @@ export class Transactions {
       cardUrl: '/icons/chip-card-grey.svg',
       masterCardUrl: '/icons/mastercard-grey.svg',
    };
+
+    p: number = 1;
+    collection: any[] = ['Hello', 'World'];
 }
