@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, signal, inject } from '@angular/core';
 import { PageLayout } from '../../core/layouts/page-layout/page-layout';
 import { CardDetails } from '../../shared/ui/card-details';
 import { Expenses } from './components/expenses';
 import { RecentTransactionTable } from './components/recent-transaction-table';
 import { Modal } from '../../shared/ui/modal';
+import { ModalService } from '../../shared/services/modal';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AddCard } from './components/add-card';
 
@@ -24,7 +25,7 @@ import { AddCard } from './components/add-card';
             <div>
                <div class="flex-between mb-5 font-semibold text-black-3">
                   <h2 class="page-title">My Cards</h2>
-                  <button href="" class="">Add Card</button>
+                  <button class="" (click)="modal.open()">Add Card</button>
                </div>
 
                <div class="flex flex-col md:grid grid-cols-2 gap-8">
@@ -52,14 +53,22 @@ import { AddCard } from './components/add-card';
                (pageChange)="p = $event"></pagination-controls>
          </section>
 
-         <app-modal title="Add Card" subText="Enter the details of your card">
-            <app-add-card></app-add-card>
-         </app-modal>
+         @if (modal.isOpen()) {
+            <app-modal
+               title="Add Card"
+               subText="Enter the details of your card"
+               (closeModal)="modal.close()">
+               <app-add-card></app-add-card>
+            </app-modal>
+         }
       </app-page-layout>
    `,
    styles: ``,
 })
 export class Transactions {
+   showAddCardModal = signal<boolean>(false);
+   modal = inject(ModalService);
+
    cardDetails = {
       date: '12/22',
       name: 'Hola',
