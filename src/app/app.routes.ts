@@ -11,8 +11,17 @@ export const routes: Routes = [
       path: 'signup',
       component: SignUp,
    },
+   // Lazy load route, the component is "éxport default", Hence no need for .then()
    {
       path: 'dashboard',
       loadComponent: () => import('./features/dashboard/dashboard'),
+   },
+   // Lazy load route, the component is not éxport default, Hence .then()
+   {
+      path: 'transactions',
+      loadComponent: () =>
+         import('./features/transactions/transactions').then(
+            m => m.Transactions,
+         ),
    },
 ];

@@ -67,9 +67,9 @@ export class SideNav {
          link: '/dashboard',
       },
       {
-         cta: 'Funds transfer',
+         cta: 'Transactions',
          icon: 'account.svg',
-         link: '/',
+         link: '/transactions',
       },
       {
          cta: 'Bills Payment',
