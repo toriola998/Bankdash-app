@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
    imports: [],
    template: `
       <div class="table-wrapper">
-         <table class="w-[700px] xl:w-full relative">
+         <table class="w-[700px] xl:w-full relative -mt-2.5">
             <thead class="sr-only">
                <tr>
                   <th class="pl-5"></th>
@@ -15,7 +15,7 @@ import { Component } from '@angular/core';
                </tr>
             </thead>
             <tbody class="w-full">
-               <tr class="table-row bg-white border-b-15 border-b-grey-5">
+               <tr class="table-row bg-white ">
                   <td class="pl-5">
                      <span class="flex-center rounded-[20px] h-17.5 w-17.5">
                         <img src="" alt="" />
@@ -42,7 +42,7 @@ import { Component } from '@angular/core';
                         item.trnxType === 'credit' ? 'text-green' : 'text-red'
                      " */ -->
                </tr>
-               <tr class="table-row bg-white border-b-15 border-b-grey-5">
+               <tr class="table-row bg-white ">
                   <td class="pl-5">
                      <span class="flex-center rounded-[20px] h-17.5 w-17.5">
                         <img src="" alt="" />
@@ -80,6 +80,11 @@ import { Component } from '@angular/core';
 
       td:last-child {
          border-radius: 0px 20px 20px 0;
+      }
+
+      table {
+         border-collapse: separate;
+         border-spacing: 0 15px;
       }
    `,
 })

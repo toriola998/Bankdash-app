@@ -38,7 +38,7 @@ import { TrendingStock } from './components/trending-stock';
 
          <div class="flex flex-col gap-7.5 lg:grid grid-cols-[60%_auto]">
             <section>
-               <h2 class="page-title mb-5">My Investment</h2>
+               <h2 class="page-title">My Investment</h2>
                <app-investment-list></app-investment-list>
             </section>
 
