@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
    selector: 'app-last-transaction',
    imports: [],
-   template: `<div class=" table-wrapper">
+   template: `<div class="table-wrapper card">
       <table class="w-[700px] xl:w-full relative">
          <thead class="sr-only">
             <tr>

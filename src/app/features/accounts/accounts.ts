@@ -29,9 +29,7 @@ import { AnalyticsCard, Analytics } from '../../shared/ui/analytics-card';
             <section>
                <h2 class="page-title mb-5">Last Transaction</h2>
 
-               <div class="card">
-                  <app-last-transaction></app-last-transaction>
-               </div>
+               <app-last-transaction></app-last-transaction>
             </section>
 
             <section>
