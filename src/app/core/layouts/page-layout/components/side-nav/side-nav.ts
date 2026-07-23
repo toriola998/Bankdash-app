@@ -83,7 +83,7 @@ export class SideNav {
       {
          cta: 'Investments',
          icon: 'investment.svg',
-         link: '/',
+         link: '/investments',
       },
    ];
 }
