@@ -1,16 +1,30 @@
 import { Component } from '@angular/core';
 import { PageLayout } from '../../core/layouts/page-layout/page-layout';
 import { AnalyticsCard, Analytics } from '../../shared/ui/analytics-card';
+import { YearlyInvestment } from './components/yearly-investment';
+import { MonthlyRevenue } from './components/monthly-revenue';
 
 @Component({
    selector: 'app-investments',
-   imports: [PageLayout, AnalyticsCard],
+   imports: [PageLayout, AnalyticsCard, YearlyInvestment, MonthlyRevenue],
    template: `
       <app-page-layout>
          <div class="flex flex-col gap-7.5 sm:grid grid-cols-2 lg:grid-cols-3">
             @for (item of accountanalytics; track item.id) {
                <app-analytics-card [analytics]="item"></app-analytics-card>
             }
+         </div>
+
+         <div class="mt-5 flex flex-col gap-5 lg:grid grid-cols-2">
+            <section>
+               <h2 class="page-title mb-5">Yearly Total Investment</h2>
+               <app-yearly-investment></app-yearly-investment>
+            </section>
+            <section>
+               <h2 class="page-title mb-5">Monthly Revenue</h2>
+
+               <app-monthly-revenue></app-monthly-revenue>
+            </section>
          </div>
       </app-page-layout>
    `,
