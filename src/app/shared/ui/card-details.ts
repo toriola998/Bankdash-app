@@ -8,7 +8,7 @@ interface Card {
    masterCardUrl: string;
 }
 
-type CardVariant = 'blue' | 'light';
+type CardVariant = 'blue' | 'light' | 'light-blue';
 
 @Component({
    selector: 'app-card-details',
@@ -56,9 +56,15 @@ type CardVariant = 'blue' | 'light';
                rgba(255, 255, 255, 0) 100%
             );
          }
-
          .bottom-light {
             border-top: 1px solid #e5e7eb;
+         }
+         .bottom-light-blue {
+            background: linear-gradient(
+               180deg,
+               rgba(255, 255, 255, 0.15) 0%,
+               rgba(255, 255, 255, 0) 100%
+            );
          }
       `,
    ],
@@ -74,6 +80,14 @@ export class CardDetails {
             article: 'bg-gradient-to-r from-indigo-600 to-blue-700 text-white',
             label: 'text-white',
             bottom: 'bottom-blue',
+         };
+      }
+      if (this.variant() === 'light-blue') {
+         return {
+            article:
+               'bg-[linear-gradient(107.38deg,#2D60FF_2.61%,#539BFF_101.2%)] text-white',
+            label: 'text-white',
+            bottom: 'bottom-light-blue',
          };
       }
 

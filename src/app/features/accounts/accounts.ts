@@ -39,7 +39,7 @@ import { AnalyticsCard, Analytics } from '../../shared/ui/analytics-card';
                </div>
 
                <app-card-details
-                  variant="blue"
+                  variant="light-blue"
                   [cardDetails]="cardDetails"></app-card-details>
             </section>
          </div>
