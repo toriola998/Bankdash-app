@@ -3,6 +3,7 @@ import { PageLayout } from '../../core/layouts/page-layout/page-layout';
 import { CardDetails } from '../../shared/ui/card-details';
 import { LastTransaction } from './components/last-transaction';
 import { DebitCreditOverview } from './components/debit-credit-overview';
+import { InvoiceSent } from "./components/invoices-sent";
 
 interface analytics {
    id: number;
@@ -13,7 +14,7 @@ interface analytics {
 }
 @Component({
    selector: 'app-accounts',
-   imports: [PageLayout, CardDetails, LastTransaction, DebitCreditOverview],
+   imports: [PageLayout, CardDetails, LastTransaction, DebitCreditOverview, InvoiceSent],
    template: `
       <app-page-layout>
          <div class="flex flex-col gap-7.5 sm:grid grid-cols-2 xl:grid-cols-4">
@@ -62,6 +63,12 @@ interface analytics {
                <h2 class="page-title mb-5">Debit & Credit Overview</h2>
 
                <app-debit-credit-overview></app-debit-credit-overview>
+            </section>
+
+            <section>
+               <h2 class="page-title mb-5">Invoices sent</h2>
+
+               <app-invoices-sent></app-invoices-sent>
             </section>
          </div>
       </app-page-layout>
