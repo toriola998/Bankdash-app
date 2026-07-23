@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { PageLayout } from '../../core/layouts/page-layout/page-layout';
 import { CardDetails } from '../../shared/ui/card-details';
 import { LastTransaction } from './components/last-transaction';
+import { DebitCreditOverview } from './components/debit-credit-overview';
 
 interface analytics {
    id: number;
@@ -12,7 +13,7 @@ interface analytics {
 }
 @Component({
    selector: 'app-accounts',
-   imports: [PageLayout, CardDetails, LastTransaction],
+   imports: [PageLayout, CardDetails, LastTransaction, DebitCreditOverview],
    template: `
       <app-page-layout>
          <div class="flex flex-col gap-7.5 sm:grid grid-cols-2 xl:grid-cols-4">
@@ -52,6 +53,15 @@ interface analytics {
                <app-card-details
                   variant="blue"
                   [cardDetails]="cardDetails"></app-card-details>
+            </section>
+         </div>
+
+         <div
+            class="md:grid grid-cols-[50%_auto] xl:grid-cols-[65%_auto] mt-5 gap-7.5">
+            <section>
+               <h2 class="page-title mb-5">Debit & Credit Overview</h2>
+
+               <app-debit-credit-overview></app-debit-credit-overview>
             </section>
          </div>
       </app-page-layout>
