@@ -1,0 +1,36 @@
+@reference "tailwindcss";
+
+a.active-link {
+   @apply text-[#1814f3];
+}
+
+a.active-link::before {
+   content: '';
+   @apply bg-[#1814f3] absolute left-0 top-[50%] w-[5.5px] h-15;
+   transform: translateY(-50%);
+   border-top-right-radius: 8px;
+   border-bottom-right-radius: 8px;
+}
+
+.side-nav.open {
+   display: block;
+}
+
+.nav-icon {
+   display: inline-block;
+   width: 24px;
+   height: 24px;
+   background-color: #b1b1b1;
+
+   /* Mask configurations */
+   mask-size: contain;
+   mask-repeat: no-repeat;
+   mask-position: center;
+   -webkit-mask-size: contain;
+   -webkit-mask-repeat: no-repeat;
+   -webkit-mask-position: center;
+}
+
+.active-link .nav-icon {
+   background-color: #1814f3;
+}

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { input } from '@angular/core';
-import { SideNav } from './components/side-nav';
+import { SideNav } from './components/side-nav/side-nav';
 
 @Component({
    selector: 'app-page-layout',

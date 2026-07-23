@@ -50,6 +50,12 @@
    }
 }
 
+.table-wrapper {
+   @apply overflow-x-scroll max-w-full rounded-2xl;
+}
+.table-wrapper::-webkit-scrollbar {
+   display: none;
+}
 .table-container::-webkit-scrollbar {
    display: none;
 }

@@ -7,22 +7,30 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
    template: `
       <nav>
          <div
-            class="bg-white min-h-screen fixed w-[248px] z-[90] hidden lg:!block side-nav px-4 py-6 "
+            class="bg-white min-h-screen fixed w-[248px] z-[90] hidden lg:!block side-nav py-6 "
             [class.open]="toggleNavBar()">
-            <a routerLink="/" class="inline-flex mb-20 logo"> BANKIFY </a>
+            <a routerLink="/" class="inline-flex mb-20 logo px-4"> BANKIFY </a>
 
             <ul class="flex flex-col justify-between">
                <div>
                   @for (item of mainNav; track item.cta) {
-                     <li class="pr-4 pb-2">
+                     <li class="pr-4 pb-2 relative">
                         <a
-                           class="flex gap-4 py-2.5 w-full px-1"
+                           class="nav-link flex items-center gap-6.5 py-2.5 w-full px-10 font-medium text-grey-8"
                            [routerLink]="item.link"
                            routerLinkActive="active-link"
                            [routerLinkActiveOptions]="{ exact: true }">
-                           <img
-                              [src]="'/assets/icons/nav-bar/' + item.icon"
-                              alt="" />
+                           <!--  span used in place of <img> to get dynamic mask icon -->
+                           <span
+                              class="nav-icon"
+                              [style.mask-image]="
+                                 'url(/icons/nav-bar/' + item.icon + ')'
+                              "
+                              [style.-webkit-mask-image]="
+                                 'url(/icons/nav-bar/' + item.icon + ')'
+                              ">
+                           </span>
+
                            {{ item.cta }}
                         </a>
                      </li>
@@ -43,11 +51,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
          </div>
       </nav>
    `,
-   styles: `
-      .side-nav.open {
-         display: block;
-      }
-   `,
+   styleUrl: './side-nav.css',
 })
 export class SideNav {
    toggleNavBar = signal(false);
@@ -68,13 +72,18 @@ export class SideNav {
       },
       {
          cta: 'Transactions',
-         icon: 'account.svg',
+         icon: 'transaction.svg',
          link: '/transactions',
       },
       {
          cta: 'Accounts',
-         icon: 'calculator.svg',
+         icon: 'accounts.svg',
          link: '/accounts',
+      },
+      {
+         cta: 'Investments',
+         icon: 'investment.svg',
+         link: '/',
       },
    ];
 }

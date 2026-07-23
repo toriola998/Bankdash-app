@@ -3,8 +3,7 @@ import { Component } from '@angular/core';
 @Component({
    selector: 'app-last-transaction',
    imports: [],
-   template: `<div
-      class="overflow-x-scroll max-w-full rounded-2xl last-transaction-wrapper">
+   template: `<div class=" table-wrapper">
       <table class="w-[700px] xl:w-full relative">
          <thead class="sr-only">
             <tr>
@@ -38,10 +37,6 @@ import { Component } from '@angular/core';
          </tbody>
       </table>
    </div>`,
-   styles: `
-      .last-transaction-wrapper::-webkit-scrollbar {
-         display: none;
-      }
-   `,
+   styles: ``,
 })
 export class LastTransaction {}
