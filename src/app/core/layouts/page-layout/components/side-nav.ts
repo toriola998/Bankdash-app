@@ -72,9 +72,9 @@ export class SideNav {
          link: '/transactions',
       },
       {
-         cta: 'Bills Payment',
+         cta: 'Accounts',
          icon: 'calculator.svg',
-         link: '/',
+         link: '/accounts',
       },
    ];
 }

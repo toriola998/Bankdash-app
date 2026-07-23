@@ -31,6 +31,7 @@
    --color-green: #41d4a8;
    --color-green-1: #dcfaf8;
    --color-yellow: #fff5d9;
+   --color-pink: #ffe0eb;
 }
 
 @import './button.css';
