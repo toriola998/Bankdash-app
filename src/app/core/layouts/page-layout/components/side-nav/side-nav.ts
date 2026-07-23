@@ -85,5 +85,10 @@ export class SideNav {
          icon: 'investment.svg',
          link: '/investments',
       },
+      {
+         cta: 'Cards',
+         icon: 'credit-cards.svg',
+         link: '/cards',
+      },
    ];
 }
