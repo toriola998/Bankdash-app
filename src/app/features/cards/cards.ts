@@ -4,10 +4,18 @@ import { CardDetails } from '../../shared/ui/card-details';
 import { CardsList } from './components/cards-list';
 import { AddCard } from '../transactions/components/add-card';
 import { CardSettings } from './components/card-settings';
+import { CardsExpenseStatistics } from './components/cards-expense-statistics';
 
 @Component({
    selector: 'app-cards',
-   imports: [PageLayout, CardDetails, CardsList, AddCard, CardSettings],
+   imports: [
+      PageLayout,
+      CardDetails,
+      CardsList,
+      AddCard,
+      CardSettings,
+      CardsExpenseStatistics,
+   ],
    template: `
       <app-page-layout>
          <div>
@@ -26,7 +34,12 @@ import { CardSettings } from './components/card-settings';
             </div>
          </div>
 
-         <div class="my-5">
+         <div class="my-5 flex flex-col xl:grid grid-cols-[auto_65%] gap-5">
+            <section>
+               <h2 class="page-title mb-5">Card expense statistics</h2>
+
+               <app-cards-expense-statistics></app-cards-expense-statistics>
+            </section>
             <section>
                <h2 class="page-title">Card List</h2>
 
