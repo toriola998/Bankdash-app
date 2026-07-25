@@ -9,6 +9,7 @@ import {
    ApexDataLabels,
    ChartComponent,
    ApexTooltip,
+   ApexYAxis,
    ApexFill,
 } from 'ng-apexcharts';
 
@@ -22,6 +23,7 @@ export type ChartOptions = {
    responsive?: ApexResponsive[];
    tooltip: ApexTooltip;
    fill: ApexFill;
+   yaxis: ApexYAxis;
    colors?: string[];
    labels?: string[];
 };
@@ -30,58 +32,31 @@ export type ChartOptions = {
    selector: 'app-cards-expense-statistics',
    imports: [ChartComponent],
    template: `
-      <div id="chart" class="card px-4 sm:py-8 chart-card">
-         <div class="chart-wrapper">
-            <apx-chart
-               [series]="chartOptions.series!"
-               [chart]="chartOptions.chart!"
-               [labels]="chartOptions.labels!"
-               [legend]="chartOptions.legend!"
-               [plotOptions]="chartOptions.plotOptions!"
-               [dataLabels]="chartOptions.dataLabels!"
-               [stroke]="chartOptions.stroke!"
-               [tooltip]="chartOptions.tooltip!"
-               [fill]="chartOptions.fill!"
-               [colors]="chartOptions.colors!"
-               [responsive]="chartOptions.responsive!">
-            </apx-chart>
-
-            <!-- Center cutout overlay to create the doughnut hole -->
-            <div class="donut-hole"></div>
-         </div>
+      <div id="chart" class="card px-4 py-2">
+         <apx-chart
+            [series]="chartOptions.series!"
+            [chart]="chartOptions.chart!"
+            [labels]="chartOptions.labels!"
+            [legend]="chartOptions.legend!"
+            [plotOptions]="chartOptions.plotOptions!"
+            [dataLabels]="chartOptions.dataLabels!"
+            [stroke]="chartOptions.stroke!"
+            [tooltip]="chartOptions.tooltip!"
+            [fill]="chartOptions.fill!"
+            [colors]="chartOptions.colors!"
+            [yaxis]="chartOptions.yaxis"
+            [responsive]="chartOptions.responsive!">
+         </apx-chart>
       </div>
    `,
-   styles: `
-      .chart-card {
-         background: #ffffff;
-         padding: 32px 24px;
-         border-radius: 28px;
-         box-shadow: 0 12px 32px rgba(0, 0, 0, 0.04);
-         width: 360px;
-      }
-      .chart-wrapper {
-         position: relative;
-      }
-      .donut-hole {
-         position: absolute;
-         top: 128px;
-         left: 50%;
-         transform: translate(-50%, -50%);
-         width: 90px;
-         height: 90px;
-         background-color: #ffffff;
-         border-radius: 50%;
-         pointer-events: none;
-         z-index: 2;
-      }
-   `,
+   styles: ``,
 })
 export class CardsExpenseStatistics {
    chartOptions: ChartOptions = {
-      series: [100, 55, 75, 82],
+      series: [50, 55, 75, 82],
       chart: {
          type: 'polarArea',
-         height: 380,
+         height: 320,
          toolbar: { show: false },
       },
       labels: ['ABM Bank', 'BRC Bank', 'MCP Bank', 'DBL Bank'],
@@ -89,6 +64,9 @@ export class CardsExpenseStatistics {
       stroke: { width: 0 },
       fill: {
          opacity: 1,
+      },
+      yaxis: {
+         show: false,
       },
 
       // Remove default radial background grid lines & spokes
