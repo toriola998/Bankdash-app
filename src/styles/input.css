@@ -30,7 +30,7 @@ textarea {
 }
 
 input {
-   @apply border flex items-center w-full rounded-xl py-3 pl-4 text-sm;
+   @apply border flex items-center w-full rounded-xl py-3 pl-4 text-sm border-grey-3;
 
    input::placeholder {
       @apply text-grey-2 text-sm;

@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { PageLayout } from '../../core/layouts/page-layout/page-layout';
 import { CardDetails } from '../../shared/ui/card-details';
+import { CardsList } from './components/cards-list';
+import { AddCard } from '../transactions/components/add-card';
 
 @Component({
    selector: 'app-cards',
-   imports: [PageLayout, CardDetails],
+   imports: [PageLayout, CardDetails, CardsList, AddCard],
    template: `
       <app-page-layout>
          <div>
@@ -21,6 +23,37 @@ import { CardDetails } from '../../shared/ui/card-details';
                   variant="light"
                   [cardDetails]="cardDetails3"></app-card-details>
             </div>
+         </div>
+
+         <div class="my-5">
+            <section>
+               <h2 class="page-title">Card List</h2>
+
+               <app-cards-list></app-cards-list>
+            </section>
+         </div>
+
+         <div class="flex flex-col xl:grid grid-cols-[65%_auto] gap-5">
+            <section>
+               <h2 class="page-title mb-5">Add New Card</h2>
+               <div class="card p-8">
+                  <p class="text-blue-1 text-sm mb-7">
+                     Credit Card generally means a plastic card issued by
+                     Scheduled Commercial Banks assigned to a Cardholder, with a
+                     credit limit, that can be used to purchase goods and
+                     services on credit or obtain cash advances.
+                  </p>
+                  <app-add-card
+                     [isSmallBtn]="true"
+                     [isGrid]="true"></app-add-card>
+               </div>
+            </section>
+         </div>
+
+         <div>
+            <section>
+               <h2 class="page-title mb-5">Card Settings</h2>
+            </section>
          </div>
       </app-page-layout>
    `,

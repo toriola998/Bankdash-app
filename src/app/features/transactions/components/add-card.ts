@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input, computed } from '@angular/core';
 import { FormField } from '../../../shared/ui/form-field';
 import { Button } from '../../../shared/ui/button';
 import { CardExpiryDirective } from '../../../shared/directives/card-expiry.directive';
@@ -22,26 +22,28 @@ import {
       CreditCardNumberDirective,
    ],
    template: ` <form [formGroup]="addCardForm" (ngSubmit)="onSubmit()">
-      <app-form-field
-         label="Card holder name"
-         [control]="addCardForm.controls.cardHolderName">
-         <input
-            id="cardHolderName"
-            type="text"
-            formControlName="cardHolderName"
-            placeholder="John Doe" />
-      </app-form-field>
+      <div [class]="gridClass()">
+         <app-form-field
+            label="Card holder name"
+            [control]="addCardForm.controls.cardHolderName">
+            <input
+               id="cardHolderName"
+               type="text"
+               formControlName="cardHolderName"
+               placeholder="John Doe" />
+         </app-form-field>
 
-      <app-form-field
-         label="Card number"
-         [control]="addCardForm.controls.cardNumber">
-         <input
-            appCreditCardNumberDirective
-            id="cardNumber"
-            type="text"
-            formControlName="cardNumber"
-            placeholder="4585 4236 5124 8563" />
-      </app-form-field>
+         <app-form-field
+            label="Card number"
+            [control]="addCardForm.controls.cardNumber">
+            <input
+               appCreditCardNumberDirective
+               id="cardNumber"
+               type="text"
+               formControlName="cardNumber"
+               placeholder="4585 4236 5124 8563" />
+         </app-form-field>
+      </div>
 
       <div class="sm:grid grid-cols-2 gap-x-4">
          <app-form-field
@@ -67,13 +69,27 @@ import {
          </app-form-field>
       </div>
 
-      <app-button
-         text="Login"
-         customClass="blue w-full !rounded-full mt-10"></app-button>
+      <app-button text="Add Card" [customClass]="buttonClass()"></app-button>
    </form>`,
    styles: ``,
 })
 export class AddCard {
+   isGrid = input<boolean>(false);
+   isSmallBtn = input<boolean>(false);
+
+   buttonClass = computed(() => {
+      const layoutClasses = this.isSmallBtn()
+         ? '!rounded-xl w-40 mt-7.5'
+         : '!rounded-full w-full mt-10';
+
+      return `btn blue ${layoutClasses}`;
+   });
+
+   gridClass = computed(() => {
+      const gridClasses = this.isGrid() ? 'sm:grid grid-cols-2 gap-x-4' : '';
+      return gridClasses;
+   });
+
    addCardForm = new FormGroup({
       cardHolderName: new FormControl('', [Validators.required]),
       cardNumber: new FormControl('', [Validators.required]),
