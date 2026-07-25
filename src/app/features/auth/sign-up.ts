@@ -15,7 +15,7 @@ import {
    template: `
       <auth-layout title="Sign up" [cta]="loginCta">
          <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-            <div class="">
+            <div class="sm:grid grid-cols-2 gap-x-4">
                <app-form-field
                   label="First Name"
                   [control]="signupForm.controls.firstName">
