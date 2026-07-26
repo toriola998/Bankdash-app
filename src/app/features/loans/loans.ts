@@ -12,6 +12,51 @@ import { AnalyticsCard, Analytics } from '../../shared/ui/analytics-card';
                <app-analytics-card [analytics]="item"></app-analytics-card>
             }
          </div>
+
+         <section>
+            <h2 class="page-title my-5">Active Loans Overview</h2>
+            <div class="table-container">
+               <table class="w-[1000px] xl:w-full relative">
+                  <thead>
+                     <tr>
+                        <th class="pl-5">SL No</th>
+                        <th>Loan money</th>
+                        <th>Left to pay</th>
+                        <th>Duration</th>
+                        <th>Interest rate</th>
+                        <th>Installment</th>
+                        <th>Repay</th>
+                     </tr>
+                  </thead>
+                  <tbody class="w-full">
+                     <tr class="table-row">
+                        <td class="pl-5">01</td>
+                        <td>$100,000</td>
+                        <td>$40,000</td>
+                        <td>8 Months</td>
+                        <td>12%</td>
+                        <td>$2,000 / month</td>
+                        <td>
+                           <button
+                              class="border-2 border-dark-blue text-dark-blue rounded-full py-2 px-4">
+                              Repay
+                           </button>
+                        </td>
+                     </tr>
+
+                     <tr class="table-row font-medium">
+                        <td class="pl-5 !text-red-1">Total</td>
+                        <td class="!text-red-1">$100,000</td>
+                        <td class="!text-red-1">$740,000</td>
+                        <td></td>
+                        <td></td>
+                        <td class="!text-red-1">$2,000 / month</td>
+                        <td></td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </section>
       </app-page-layout>
    `,
    styles: ``,
