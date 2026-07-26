@@ -52,19 +52,6 @@ import { Component } from '@angular/core';
          </table>
       </div>
    `,
-   styles: `
-      td:first-child {
-         border-radius: 20px 0 0 20px;
-      }
-
-      td:last-child {
-         border-radius: 0px 20px 20px 0;
-      }
-
-      table {
-         border-collapse: separate;
-         border-spacing: 0 15px;
-      }
-   `,
+   styles: ``,
 })
 export class CardsList {}

@@ -38,7 +38,7 @@ import { AnalyticsCard, Analytics } from '../../shared/ui/analytics-card';
                         <td>$2,000 / month</td>
                         <td>
                            <button
-                              class="border-2 border-dark-blue text-dark-blue rounded-full py-2 px-4">
+                              class="round-outline-btn border-black-4 text-black-4 px-6">
                               Repay
                            </button>
                         </td>

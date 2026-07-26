@@ -19,16 +19,26 @@ export interface Analytics {
             <img [src]="analytics()?.icon" alt="" />
          </div>
          <div>
-            <p class="text-blue-1">{{ analytics()?.title }}</p>
+            @if (!isService()) {
+               <p class="text-blue-1">{{ analytics()?.title }}</p>
+            }
             <p class="text-black-4 font-semibold text-2xl">
                {{ analytics()?.amount }}
             </p>
+            @if (isService()) {
+               <p class="text-blue-1">{{ analytics()?.title }}</p>
+            }
          </div>
       </div>
    `,
-   styles: ``,
+   styles: `
+      .hide-title {
+         display: none;
+      }
+   `,
 })
 export class AnalyticsCard {
    // analytics: analytics = input({})
    analytics = input.required<Analytics>();
+   isService = input<boolean>(false);
 }

@@ -95,5 +95,10 @@ export class SideNav {
          icon: 'loans.svg',
          link: '/loans',
       },
+      {
+         cta: 'Services',
+         icon: 'services.svg',
+         link: '/services',
+      },
    ];
 }
