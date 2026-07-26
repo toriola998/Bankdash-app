@@ -46,4 +46,8 @@ export const routes: Routes = [
       path: 'services',
       loadComponent: () => import('./features/services').then(m => m.Services),
    },
+   {
+      path: 'settings',
+      loadComponent: () => import('./features/settings/settings').then(m => m.Settings),
+   },
 ];

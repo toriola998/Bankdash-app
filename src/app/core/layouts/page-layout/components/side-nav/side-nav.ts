@@ -16,7 +16,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
                   @for (item of mainNav; track item.cta) {
                      <li class="pr-4 pb-2 relative">
                         <a
-                           class="nav-link flex items-center gap-6.5 py-2.5 w-full px-10 font-medium text-grey-8"
+                           class="nav-link flex items-center gap-6.5 py-3 w-full px-10 font-medium text-grey-8"
                            [routerLink]="item.link"
                            routerLinkActive="active-link"
                            [routerLinkActiveOptions]="{ exact: true }">
@@ -99,6 +99,11 @@ export class SideNav {
          cta: 'Services',
          icon: 'services.svg',
          link: '/services',
+      },
+      {
+         cta: 'Settings',
+         icon: 'settings.svg',
+         link: '/settings',
       },
    ];
 }
