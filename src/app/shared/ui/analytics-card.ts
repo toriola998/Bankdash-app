@@ -12,7 +12,7 @@ export interface Analytics {
    selector: 'app-analytics-card',
    imports: [],
    template: `
-      <div class="card py-6 px-9 flex-items gap-x-7.5">
+      <div class="card py-6 px-9 flex-items gap-x-4">
          <div
             class="flex-center h-17.5 w-17.5 rounded-full"
             [class]="analytics()?.iconTheme">

@@ -38,4 +38,8 @@ export const routes: Routes = [
       path: 'cards',
       loadComponent: () => import('./features/cards/cards').then(m => m.Cards),
    },
+   {
+      path: 'loans',
+      loadComponent: () => import('./features/loans/loans').then(m => m.Loans),
+   },
 ];
