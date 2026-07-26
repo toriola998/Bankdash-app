@@ -43,7 +43,6 @@ export type ChartOptions = {
          [tooltip]="chartOptions.tooltip">
       </apx-chart>
    </div> `,
-   styles: ``,
 })
 export class DebitCreditOverview {
    chartOptions: ChartOptions = {

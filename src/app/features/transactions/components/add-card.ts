@@ -71,7 +71,6 @@ import {
 
       <app-button text="Add Card" [customClass]="buttonClass()"></app-button>
    </form>`,
-   styles: ``,
 })
 export class AddCard {
    isGrid = input<boolean>(false);

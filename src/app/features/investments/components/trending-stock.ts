@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
    selector: 'app-trending-stock',
-   imports: [],
    template: `<div class="table-container">
       <table class="w-[1000px] xl:w-full relative">
          <thead>
@@ -27,6 +26,5 @@ import { Component } from '@angular/core';
          </tbody>
       </table>
    </div> `,
-   styles: ``,
 })
 export class TrendingStock {}

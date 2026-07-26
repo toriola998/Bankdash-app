@@ -2,7 +2,6 @@ import { Component, output, input } from '@angular/core';
 
 @Component({
    selector: 'app-modal',
-   imports: [],
    standalone: true,
    template: `<div class="modal-overlay overlay z-[100]">
       <div

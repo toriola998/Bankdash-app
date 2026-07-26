@@ -14,7 +14,6 @@ interface Transaction {
 
 @Component({
    selector: 'app-recent-transactions',
-   imports: [],
    template: `
       <h2 class="page-title mb-5">Recent Transactions</h2>
 

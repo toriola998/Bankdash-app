@@ -49,7 +49,6 @@ export type ChartOptions = {
          </apx-chart>
       </div>
    `,
-   styles: ``,
 })
 export class CardsExpenseStatistics {
    chartOptions: ChartOptions = {

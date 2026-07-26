@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
    selector: 'app-card-settings',
-   imports: [],
    template: `<div class="card p-4 sm:p-8">
       <div class="flex flex-col gap-y-5">
          @for (item of card_settings; track item.text) {
@@ -23,7 +22,6 @@ import { Component } from '@angular/core';
          }
       </div>
    </div> `,
-   styles: ``,
 })
 export class CardSettings {
    card_settings = [

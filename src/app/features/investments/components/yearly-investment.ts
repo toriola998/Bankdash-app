@@ -35,7 +35,6 @@ export type ChartOptions = {
          [markers]="chartOptions.markers"
          [colors]="chartOptions.colors!"></apx-chart>
    </div> `,
-   styles: ``,
 })
 export class YearlyInvestment {
    public chartOptions: ChartOptions = {

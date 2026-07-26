@@ -70,7 +70,6 @@ import { CardsExpenseStatistics } from './components/cards-expense-statistics';
          </div>
       </app-page-layout>
    `,
-   styles: ``,
 })
 export class Cards {
    cardDetails = {

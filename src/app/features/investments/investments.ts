@@ -49,7 +49,6 @@ import { TrendingStock } from './components/trending-stock';
          </div>
       </app-page-layout>
    `,
-   styles: ``,
 })
 export class Investments {
    accountanalytics: Analytics[] = [

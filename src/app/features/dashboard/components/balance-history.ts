@@ -28,7 +28,6 @@ export type ChartOptions = {
          [xaxis]="chartOptions.xaxis!"
          [colors]="chartOptions.colors!"></apx-chart>
    </div> `,
-   styles: ``,
 })
 export class BalanceHistory {
    public chartOptions: ChartOptions = {

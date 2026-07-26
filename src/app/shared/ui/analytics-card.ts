@@ -10,7 +10,6 @@ export interface Analytics {
 
 @Component({
    selector: 'app-analytics-card',
-   imports: [],
    template: `
       <div class="card py-6 px-9 flex-items gap-x-4">
          <div

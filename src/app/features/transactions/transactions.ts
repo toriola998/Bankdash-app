@@ -63,7 +63,6 @@ import { AddCard } from './components/add-card';
          }
       </app-page-layout>
    `,
-   styles: ``,
 })
 export class Transactions {
    showAddCardModal = signal<boolean>(false);

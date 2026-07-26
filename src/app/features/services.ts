@@ -80,7 +80,6 @@ import { AnalyticsCard, Analytics } from '../shared/ui/analytics-card';
          </section>
       </app-page-layout>
    `,
-   styles: ``,
 })
 export class Services {
    loanAnalytics: Analytics[] = [

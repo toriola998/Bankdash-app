@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 @Component({
    selector: 'app-loading-spinner',
    standalone: true,
-   imports: [],
    template: `
       <div class="spinner-overlay overlay z-[200]">
          <div class="relative card p-4 sm:px-6 pb-8 modal-inner">

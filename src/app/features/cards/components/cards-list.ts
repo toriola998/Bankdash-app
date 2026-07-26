@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
    selector: 'app-cards-list',
-   imports: [],
    template: `
       <div class="table-wrapper">
          <table class="w-[700px] xl:w-full relative -mt-2.5">
@@ -52,6 +51,5 @@ import { Component } from '@angular/core';
          </table>
       </div>
    `,
-   styles: ``,
 })
 export class CardsList {}

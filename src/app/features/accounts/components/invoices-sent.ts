@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
    selector: 'app-invoices-sent',
-   imports: [],
    template: `<div class="card px-6 py-7.5">
       <div class="flex-between">
          <div class="flex-items gap-x-5">
@@ -17,6 +16,5 @@ import { Component } from '@angular/core';
          <p class="text-blue-1">$450</p>
       </div>
    </div> `,
-   styles: ``,
 })
 export class InvoiceSent {}

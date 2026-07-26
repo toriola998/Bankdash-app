@@ -60,7 +60,6 @@ import { AnalyticsCard, Analytics } from '../../shared/ui/analytics-card';
          </div>
       </app-page-layout>
    `,
-   styles: ``,
 })
 export class Accounts {
    accountanalytics: Analytics[] = [

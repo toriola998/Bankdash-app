@@ -2,7 +2,6 @@ import { Component, input, output, computed } from '@angular/core';
 
 @Component({
    selector: 'app-button',
-   imports: [],
    standalone: true,
    template: ` <button
       class="text-sm btn"
