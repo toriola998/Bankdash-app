@@ -20,9 +20,17 @@ import { Component, signal } from '@angular/core';
             (click)="activeTab.set('preferences')">
             Preferences
          </button>
+
+         <button
+            role="tab"
+            [attr.aria-selected]="activeTab() === 'security'"
+            [class.active]="activeTab() === 'security'"
+            (click)="activeTab.set('security')">
+            Security
+         </button>
       </div>
 
-      <div class="tab-panels mt-5 lg:mt-10">
+      <div class="tab-panels mt-5">
          @if (activeTab() === 'edit-profile') {
             <div role="tabpanel">
                <ng-content select="[edit-profile]"></ng-content>
@@ -30,6 +38,10 @@ import { Component, signal } from '@angular/core';
          } @else if (activeTab() === 'preferences') {
             <div role="tabpanel">
                <ng-content select="[preferences]"></ng-content>
+            </div>
+         } @else if (activeTab() === 'security') {
+            <div role="tabpanel">
+               <ng-content select="[security]"></ng-content>
             </div>
          }
       </div>
@@ -62,5 +74,7 @@ import { Component, signal } from '@angular/core';
    ],
 })
 export class TabsComponent {
-   activeTab = signal<'edit-profile' | 'preferences'>('edit-profile');
+   activeTab = signal<'edit-profile' | 'preferences' | 'security'>(
+      'edit-profile',
+   );
 }
