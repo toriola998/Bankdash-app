@@ -15,10 +15,10 @@ import { Component, signal } from '@angular/core';
 
          <button
             role="tab"
-            [attr.aria-selected]="activeTab() === 'privacy'"
-            [class.active]="activeTab() === 'privacy'"
-            (click)="activeTab.set('privacy')">
-            Privacy
+            [attr.aria-selected]="activeTab() === 'preferences'"
+            [class.active]="activeTab() === 'preferences'"
+            (click)="activeTab.set('preferences')">
+            Preferences
          </button>
       </div>
 
@@ -27,8 +27,10 @@ import { Component, signal } from '@angular/core';
             <div role="tabpanel">
                <ng-content select="[edit-profile]"></ng-content>
             </div>
-         } @else if (activeTab() === 'privacy') {
-            <div role="tabpanel">Privacy settings content goes here.</div>
+         } @else if (activeTab() === 'preferences') {
+            <div role="tabpanel">
+               <ng-content select="[preferences]"></ng-content>
+            </div>
          }
       </div>
    `,
@@ -60,5 +62,5 @@ import { Component, signal } from '@angular/core';
    ],
 })
 export class TabsComponent {
-   activeTab = signal<'edit-profile' | 'privacy'>('edit-profile');
+   activeTab = signal<'edit-profile' | 'preferences'>('edit-profile');
 }

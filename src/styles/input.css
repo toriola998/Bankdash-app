@@ -1,4 +1,5 @@
-input {
+input,
+select {
    outline: 0;
 }
 
@@ -29,7 +30,8 @@ textarea {
    }
 }
 
-input {
+input,
+select {
    @apply border flex items-center w-full rounded-xl py-3 pl-4 text-sm border-grey-3;
 
    input::placeholder {
