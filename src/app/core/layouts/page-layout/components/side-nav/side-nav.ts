@@ -7,7 +7,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
    template: `
       <nav>
          <div
-            class="bg-white min-h-screen fixed w-[248px] z-[90] hidden lg:!block side-nav py-6 "
+            class="bg-white min-h-screen fixed w-[248px] z-[90] hidden lg:!block side-nav py-6 border-r border-grey-7"
             [class.open]="toggleNavBar()">
             <a routerLink="/" class="inline-flex mb-20 logo px-4"> BANKIFY </a>
 
@@ -41,13 +41,11 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 
          <!-- Mobile Top Bar -->
          <div class="p-6 flex-between lg:hidden top-0 z-50 w-full">
-            <a routerLink="/" class="lg:hidden logo"> BANKIFY </a>
+            <button (click)="handleToggle()" class="lg:hidden">
+               <img src="/icons/nav-bar/menu.svg" alt="" />
+            </button>
 
-            <div class="flex gap-2">
-               <button (click)="handleToggle()" class="lg:hidden">menu</button>
-
-               <ng-content></ng-content>
-            </div>
+            <ng-content></ng-content>
          </div>
       </nav>
    `,

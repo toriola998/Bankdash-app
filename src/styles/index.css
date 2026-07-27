@@ -64,7 +64,7 @@ button {
 }
 
 h1.page-title {
-   @apply font-semibold text-gray-700 text-xl md:text-2xl mb-5 lg:mb-10;
+   @apply font-semibold text-gray-700 text-xl md:text-2xl;
 }
 
 .page-title {

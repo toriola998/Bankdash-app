@@ -18,7 +18,7 @@ import { QuickTransfer } from './components/quick-transfer/quick-transfer';
       BalanceHistory,
       QuickTransfer,
    ],
-   template: ` <app-page-layout>
+   template: ` <app-page-layout title="Dashboard">
       <div class="flex flex-col xl:grid grid-cols-[65%_auto] gap-8">
          <div>
             <div class="flex-between mb-5 font-semibold text-black-3">
