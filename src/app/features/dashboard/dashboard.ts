@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { PageLayout } from '../../core/layouts/page-layout/page-layout';
-import { CardDetails } from '../../shared/ui/card-details';
+import { PageLayout } from '@core/layouts/page-layout/page-layout';
+import { CardDetails } from '@shared/ui/card-details';
 import { RecentTransactions } from './components/recent-transactions';
 import { WeeklyActivities } from './components/weekly-activities';
 import { ExpenseStatistics } from './components/expense-statistics';

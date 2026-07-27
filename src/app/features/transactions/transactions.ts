@@ -1,10 +1,10 @@
 import { Component, signal, inject } from '@angular/core';
-import { PageLayout } from '../../core/layouts/page-layout/page-layout';
-import { CardDetails } from '../../shared/ui/card-details';
+import { PageLayout } from '@core/layouts/page-layout/page-layout';
+import { CardDetails } from '@shared/ui/card-details';
 import { Expenses } from './components/expenses';
 import { RecentTransactionTable } from './components/recent-transaction-table';
-import { Modal } from '../../shared/ui/modal';
-import { ModalService } from '../../shared/services/modal';
+import { Modal } from '@shared/ui/modal';
+import { ModalService } from '@shared/services/modal';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AddCard } from './components/add-card';
 

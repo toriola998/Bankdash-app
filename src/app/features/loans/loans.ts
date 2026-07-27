@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { PageLayout } from '../../core/layouts/page-layout/page-layout';
-import { AnalyticsCard, Analytics } from '../../shared/ui/analytics-card';
+import { PageLayout } from '@core/layouts/page-layout/page-layout';
+import { AnalyticsCard, Analytics } from '@shared/ui/analytics-card';
 
 @Component({
    selector: 'app-loans',

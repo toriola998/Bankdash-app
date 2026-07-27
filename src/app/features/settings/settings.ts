@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PageLayout } from '../../core/layouts/page-layout/page-layout';
+import { PageLayout } from '@core/layouts/page-layout/page-layout';
 import { TabsComponent } from './components/Tabs';
 import { EditProfile } from './components/edit-profile';
 import { Preferences } from './components/preferences';

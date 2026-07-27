@@ -2,10 +2,10 @@ import { Component, input, signal, inject } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { NgxOtpInputComponent, OtpStatus } from 'ngx-otp-input';
-import { ParseAmountPipe } from '../../../../shared/pipes/parse-amount-pipe';
-import { LoadingSpinner } from '../../../../shared/ui/loading-spinner';
-import { ModalService } from '../../../../shared/services/modal';
-import { Modal } from '../../../../shared/ui/modal';
+import { ParseAmountPipe } from '@shared/pipes/parse-amount-pipe';
+import { LoadingSpinner } from '@shared/ui/loading-spinner';
+import { ModalService } from '@shared/services/modal';
+import { Modal } from '@shared/ui/modal';
 
 interface ActiveBeneficiary {
    id: number;

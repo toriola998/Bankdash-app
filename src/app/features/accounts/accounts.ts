@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { PageLayout } from '../../core/layouts/page-layout/page-layout';
-import { CardDetails } from '../../shared/ui/card-details';
+import { PageLayout } from '@core/layouts/page-layout/page-layout';
+import { CardDetails } from '@shared/ui/card-details';
 import { LastTransaction } from './components/last-transaction';
 import { DebitCreditOverview } from './components/debit-credit-overview';
 import { InvoiceSent } from './components/invoices-sent';
-import { AnalyticsCard, Analytics } from '../../shared/ui/analytics-card';
+import { AnalyticsCard, Analytics } from '@shared/ui/analytics-card';
 
 @Component({
    selector: 'app-accounts',

@@ -1,9 +1,9 @@
 import { Component, input, computed } from '@angular/core';
-import { FormField } from '../../../shared/ui/form-field';
-import { Button } from '../../../shared/ui/button';
-import { CardExpiryDirective } from '../../../shared/directives/card-expiry.directive';
-import { NumbersOnlyDirective } from '../../../shared/directives/numbers-only.directive';
-import { CreditCardNumberDirective } from '../../../shared/directives/credit-card-number.directive';
+import { FormField } from '@shared/ui/form-field';
+import { Button } from '@shared/ui/button';
+import { CardExpiryDirective } from '@shared/directives/card-expiry.directive';
+import { NumbersOnlyDirective } from '@shared/directives/numbers-only.directive';
+import { CreditCardNumberDirective } from '@shared/directives/credit-card-number.directive';
 import {
    FormGroup,
    FormControl,
