@@ -30,22 +30,12 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
                                  'url(/icons/nav-bar/' + item.icon + ')'
                               ">
                            </span>
-
                            {{ item.cta }}
                         </a>
                      </li>
                   }
                </div>
             </ul>
-         </div>
-
-         <!-- Mobile Top Bar -->
-         <div class="p-6 flex-between lg:hidden top-0 z-50 w-full">
-            <button (click)="handleToggle()" class="lg:hidden">
-               <img src="/icons/nav-bar/menu.svg" alt="" />
-            </button>
-
-            <ng-content></ng-content>
          </div>
       </nav>
    `,
@@ -54,54 +44,18 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 export class SideNav {
    toggleNavBar = signal(false);
 
-   handleToggle() {
-      if (this.toggleNavBar()) {
-         this.toggleNavBar.set(false);
-      } else {
-         this.toggleNavBar.set(true);
-      }
+   toggle() {
+      this.toggleNavBar.update(prev => !prev);
    }
 
    mainNav = [
-      {
-         cta: 'Dashboard',
-         icon: 'dashboard.svg',
-         link: '/dashboard',
-      },
-      {
-         cta: 'Transactions',
-         icon: 'transaction.svg',
-         link: '/transactions',
-      },
-      {
-         cta: 'Accounts',
-         icon: 'accounts.svg',
-         link: '/accounts',
-      },
-      {
-         cta: 'Investments',
-         icon: 'investment.svg',
-         link: '/investments',
-      },
-      {
-         cta: 'Cards',
-         icon: 'credit-cards.svg',
-         link: '/cards',
-      },
-      {
-         cta: 'Loans',
-         icon: 'loans.svg',
-         link: '/loans',
-      },
-      {
-         cta: 'Services',
-         icon: 'services.svg',
-         link: '/services',
-      },
-      {
-         cta: 'Settings',
-         icon: 'settings.svg',
-         link: '/settings',
-      },
+      { cta: 'Dashboard', icon: 'dashboard.svg', link: '/dashboard' },
+      { cta: 'Transactions', icon: 'transaction.svg', link: '/transactions' },
+      { cta: 'Accounts', icon: 'accounts.svg', link: '/accounts' },
+      { cta: 'Investments', icon: 'investment.svg', link: '/investments' },
+      { cta: 'Cards', icon: 'credit-cards.svg', link: '/cards' },
+      { cta: 'Loans', icon: 'loans.svg', link: '/loans' },
+      { cta: 'Services', icon: 'services.svg', link: '/services' },
+      { cta: 'Settings', icon: 'settings.svg', link: '/settings' },
    ];
 }
