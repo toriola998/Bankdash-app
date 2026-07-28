@@ -29,9 +29,9 @@ import { TopBar } from './components/top-bar';
 
                <app-top-bar [title]="title()" />
             </div>
-            <div class="px-4 pt-7.5 pb-20">
-               <ng-content></ng-content>
-            </div>
+         </div>
+         <div class="px-4 pt-7.5 lg:px-10 pb-20 max-w-[1500px] 2xl:mx-auto ">
+            <ng-content></ng-content>
          </div>
       </main>
    </div>`,
