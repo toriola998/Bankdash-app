@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Button } from '@shared/ui/button';
 import { FormField } from '@shared/ui/form-field';
+import { getFirebaseErrMsg } from '@shared/utils/firebase-error';
 import { AuthLayout, AuthCta } from '@core/layouts/auth-layout';
 import {
    FormGroup,
@@ -8,6 +9,8 @@ import {
    ReactiveFormsModule,
    Validators,
 } from '@angular/forms';
+import { AuthService } from './services/auth-service';
+import { ToastService } from '@core/services/toast-service';
 
 @Component({
    selector: 'app-login',
@@ -61,26 +64,44 @@ import {
          </form>
       </auth-layout>
    `,
-   styles: '',
 })
 export class SignUp {
+   authService = inject(AuthService);
+   toastService = inject(ToastService);
+
    signupForm = new FormGroup({
-      firstName: new FormControl('', [Validators.required]),
-      lastName: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [
-         Validators.required,
-         Validators.minLength(6),
-      ]),
+      firstName: new FormControl('', {
+         nonNullable: true,
+         validators: [Validators.required],
+      }),
+
+      lastName: new FormControl('', {
+         nonNullable: true,
+         validators: [Validators.required],
+      }),
+      email: new FormControl('', {
+         nonNullable: true,
+         validators: [Validators.required, Validators.email],
+      }),
+      password: new FormControl('', {
+         nonNullable: true,
+         validators: [Validators.required, Validators.minLength(6)],
+      }),
    });
 
-   onSubmit() {
+   async onSubmit() {
       if (this.signupForm.invalid) {
          this.signupForm.markAllAsTouched();
          return;
       }
-      console.log(this.signupForm.value, 'value');
-      console.log(this.signupForm.controls, 'controls');
+      const { email, password, firstName, lastName } =
+         this.signupForm.getRawValue();
+
+      try {
+         await this.authService.register(email, password, firstName, lastName);
+      } catch (error: any) {
+         this.toastService.error(getFirebaseErrMsg(error));
+      }
    }
 
    loginCta: AuthCta = {
