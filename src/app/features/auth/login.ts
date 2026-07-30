@@ -1,10 +1,11 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Button } from '@shared/ui/button';
 import { FormField } from '@shared/ui/form-field';
 import { AuthLayout, AuthCta } from '@core/layouts/auth-layout';
 import { AuthService } from './services/auth-service';
 import { ToastService } from '@core/services/toast-service';
 import { getFirebaseErrMsg } from '@shared/utils/firebase-error';
+import { Router } from '@angular/router';
 import {
    FormGroup,
    FormControl,
@@ -38,6 +39,7 @@ import {
 
             <app-button
                text="Login"
+               [isLoading]="isLoading()"
                customClass="blue w-full !rounded-full mt-10"></app-button>
          </form>
       </auth-layout>
@@ -47,6 +49,9 @@ import {
 export class Login {
    authService = inject(AuthService);
    toastService = inject(ToastService);
+
+   private router = inject(Router);
+   isLoading = signal<boolean>(false);
 
    loginForm = new FormGroup({
       email: new FormControl('', {
@@ -65,10 +70,16 @@ export class Login {
          return;
       }
       const { email, password } = this.loginForm.getRawValue();
+
+      this.isLoading.set(true);
+
       try {
          await this.authService.login(email, password);
+         this.router.navigate(['/dashboard']);
       } catch (error: any) {
          this.toastService.error(getFirebaseErrMsg(error));
+      } finally {
+         this.isLoading.set(false);
       }
    }
 

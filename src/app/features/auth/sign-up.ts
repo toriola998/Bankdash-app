@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Button } from '@shared/ui/button';
 import { FormField } from '@shared/ui/form-field';
 import { getFirebaseErrMsg } from '@shared/utils/firebase-error';
@@ -11,6 +11,7 @@ import {
 } from '@angular/forms';
 import { AuthService } from './services/auth-service';
 import { ToastService } from '@core/services/toast-service';
+import { Router } from '@angular/router';
 
 @Component({
    selector: 'app-login',
@@ -60,6 +61,7 @@ import { ToastService } from '@core/services/toast-service';
 
             <app-button
                text="Sign up"
+               [isLoading]="isLoading()"
                customClass="blue w-full !rounded-full mt-10"></app-button>
          </form>
       </auth-layout>
@@ -68,6 +70,9 @@ import { ToastService } from '@core/services/toast-service';
 export class SignUp {
    authService = inject(AuthService);
    toastService = inject(ToastService);
+
+   private router = inject(Router);
+   isLoading = signal<boolean>(false);
 
    signupForm = new FormGroup({
       firstName: new FormControl('', {
@@ -97,10 +102,15 @@ export class SignUp {
       const { email, password, firstName, lastName } =
          this.signupForm.getRawValue();
 
+      this.isLoading.set(true);
+
       try {
          await this.authService.register(email, password, firstName, lastName);
+         this.router.navigate(['/dashboard']);
       } catch (error: any) {
          this.toastService.error(getFirebaseErrMsg(error));
+      } finally {
+         this.isLoading.set(false);
       }
    }
 
