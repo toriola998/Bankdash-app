@@ -9,7 +9,7 @@ import {
    ReactiveFormsModule,
    Validators,
 } from '@angular/forms';
-import { AuthService } from './services/auth-service';
+import { AuthService } from '../services/auth-service';
 import { ToastService } from '@core/services/toast-service';
 import { Router } from '@angular/router';
 
@@ -103,7 +103,6 @@ export class SignUp {
          this.signupForm.getRawValue();
 
       this.isLoading.set(true);
-
       try {
          await this.authService.register(email, password, firstName, lastName);
          this.router.navigate(['/dashboard']);

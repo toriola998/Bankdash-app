@@ -2,7 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { Button } from '@shared/ui/button';
 import { FormField } from '@shared/ui/form-field';
 import { AuthLayout, AuthCta } from '@core/layouts/auth-layout';
-import { AuthService } from './services/auth-service';
+import { AuthService } from '../services/auth-service';
 import { ToastService } from '@core/services/toast-service';
 import { getFirebaseErrMsg } from '@shared/utils/firebase-error';
 import { Router } from '@angular/router';
@@ -72,7 +72,6 @@ export class Login {
       const { email, password } = this.loginForm.getRawValue();
 
       this.isLoading.set(true);
-
       try {
          await this.authService.login(email, password);
          this.router.navigate(['/dashboard']);
