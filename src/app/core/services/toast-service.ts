@@ -17,7 +17,7 @@ export class ToastService {
          stopOnFocus: true,
          style: {
             background,
-            'padding': '18px',
+            padding: '18px',
             'border-radius': '4px',
             'box-shadow':
                '0 1px 10px 0 rgb(0, 0, 0, 0.1), 0 2px 15px 0 rgb(0, 0, 0, 0.05)',

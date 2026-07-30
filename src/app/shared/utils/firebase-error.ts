@@ -9,6 +9,9 @@ export function getFirebaseErrMsg(error: FirebaseError): string {
       case 'auth/invalid-email':
          return 'Please enter a valid email address.';
 
+      case 'auth/invalid-credential':
+         return 'Incorrect username or password';
+
       case 'auth/weak-password':
          return 'Password should be at least 6 characters.';
 

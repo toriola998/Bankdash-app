@@ -1,22 +1,18 @@
-import { Injectable } from '@angular/core';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import { doc, setDoc, serverTimestamp, FieldValue } from 'firebase/firestore';
-import { db } from '@core/config/firebase.config';
-
-export interface UserProfile {
-   uid: string;
-   firstName: string;
-   lastName: string;
-   email: string;
-   role?: string;
-   createdAt?: FieldValue;
-}
+import { Injectable, inject } from '@angular/core';
+import {
+   getAuth,
+   createUserWithEmailAndPassword,
+   signInWithEmailAndPassword,
+} from 'firebase/auth';
+import { serverTimestamp } from 'firebase/firestore';
+import { UserService } from '@core/services/user-service';
 
 @Injectable({
    providedIn: 'root',
 })
 export class AuthService {
    private readonly auth = getAuth();
+   userService = inject(UserService);
 
    async register(
       email: string,
@@ -29,21 +25,29 @@ export class AuthService {
          email,
          pass,
       );
-      const uid = userCredential.user.uid;
 
-      const profileData: UserProfile = {
+      const { uid } = userCredential.user;
+      const payload = {
          uid,
          firstName,
          lastName,
          email,
-         role: 'user',
          createdAt: serverTimestamp(),
       };
+      await this.userService.createUserProfile(payload);
 
-      const reference = doc(db, 'users', uid);
+      return userCredential.user;
+   }
 
-      await setDoc(reference, profileData);
-      //  this.userProfile.set(profileData);
+   async login(email: string, password: string) {
+      const userCredential = await signInWithEmailAndPassword(
+         this.auth,
+         email,
+         password,
+      );
+
+      const { uid } = userCredential.user;
+      await this.userService.fetchUserProfile(uid);
 
       return userCredential.user;
    }

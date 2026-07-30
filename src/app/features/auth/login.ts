@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Button } from '@shared/ui/button';
 import { FormField } from '@shared/ui/form-field';
 import { AuthLayout, AuthCta } from '@core/layouts/auth-layout';
+import { AuthService } from './services/auth-service';
+import { ToastService } from '@core/services/toast-service';
+import { getFirebaseErrMsg } from '@shared/utils/firebase-error';
 import {
    FormGroup,
    FormControl,
@@ -42,21 +45,31 @@ import {
    styles: '',
 })
 export class Login {
+   authService = inject(AuthService);
+   toastService = inject(ToastService);
+
    loginForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [
-         Validators.required,
-         Validators.minLength(6),
-      ]),
+      email: new FormControl('', {
+         nonNullable: true,
+         validators: [Validators.required, Validators.email],
+      }),
+      password: new FormControl('', {
+         nonNullable: true,
+         validators: [Validators.required, Validators.minLength(6)],
+      }),
    });
 
-   onSubmit() {
+   async onSubmit() {
       if (this.loginForm.invalid) {
          this.loginForm.markAllAsTouched();
          return;
       }
-      console.log(this.loginForm.value, 'value');
-      console.log(this.loginForm.controls, 'controls');
+      const { email, password } = this.loginForm.getRawValue();
+      try {
+         await this.authService.login(email, password);
+      } catch (error: any) {
+         this.toastService.error(getFirebaseErrMsg(error));
+      }
    }
 
    signUpCta: AuthCta = {
