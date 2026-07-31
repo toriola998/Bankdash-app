@@ -15,7 +15,9 @@ import { TopBar } from './components/top-bar';
             class="w-full hidden lg:block bg-white border-r border-grey-7 h-22">
             <div
                class="max-w-[1500px] 2xl:mx-auto lg:flex items-center h-22 justify-between px-10 ">
-               <app-top-bar [title]="title()" />
+               <h1 class="page-title">{{ title() }}</h1>
+
+               <app-top-bar />
             </div>
          </div>
 
@@ -27,7 +29,9 @@ import { TopBar } from './components/top-bar';
                   <img src="/icons/nav-bar/menu.svg" alt="" />
                </button>
 
-               <app-top-bar [title]="title()" />
+               <h1 class="page-title">{{ title() }}</h1>
+
+               <app-top-bar />
             </div>
          </div>
          <div class="px-4 pt-7.5 lg:px-10 pb-20 max-w-[1500px] 2xl:mx-auto ">

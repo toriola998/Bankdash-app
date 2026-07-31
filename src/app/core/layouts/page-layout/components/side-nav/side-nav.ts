@@ -7,9 +7,19 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
    template: `
       <nav>
          <div
-            class="bg-white min-h-screen fixed w-[248px] z-[90] hidden lg:!block side-nav py-6 border-r border-grey-7"
+            class="bg-white min-h-screen fixed w-[258px] lg:w-[248px] z-[90] hidden lg:!block side-nav py-6 border-r border-grey-7"
             [class.open]="toggleNavBar()">
-            <a routerLink="/" class="inline-flex mb-20 logo px-4"> BANKIFY </a>
+            <!-- <a routerLink="/" class="inline-flex mb-20 logo px-4"> BANKIFY </a> -->
+
+            <div class="flex-items mb-20 px-4 justify-between">
+               <a routerLink="/dashboard" class="inline-flex">
+                  <img src="/icons/logo.svg" alt="" class="w-40 md:w-45" />
+               </a>
+
+               <button (click)="toggle()" class="lg:hidden">
+                  <img src="/icons/cancel.svg" alt="" />
+               </button>
+            </div>
 
             <ul class="flex flex-col justify-between">
                <div>
