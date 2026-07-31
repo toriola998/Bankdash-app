@@ -20,7 +20,7 @@ import { AddCard } from './components/add-card';
       AddCard,
    ],
    template: `
-      <app-page-layout>
+      <app-page-layout title="Transactions">
          <div class="flex flex-col xl:grid grid-cols-[65%_auto] gap-8">
             <div>
                <div class="flex-between mb-5 font-semibold text-black-3">
@@ -58,7 +58,8 @@ import { AddCard } from './components/add-card';
                title="Add Card"
                subText="Enter the details of your card"
                (closeModal)="modal.close()">
-               <app-add-card></app-add-card>
+               <app-add-card
+                  (addCardSuccessEvent)="modal.close()"></app-add-card>
             </app-modal>
          }
       </app-page-layout>

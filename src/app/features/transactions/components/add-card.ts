@@ -1,14 +1,23 @@
-import { Component, input, computed } from '@angular/core';
+import {
+   Component,
+   input,
+   computed,
+   inject,
+   signal,
+   output,
+} from '@angular/core';
 import { FormField } from '@shared/ui/form-field';
 import { Button } from '@shared/ui/button';
+import { getFirebaseErrMsg } from '@shared/utils/firebase-error';
 import { CardExpiryDirective } from '@shared/directives/card-expiry.directive';
 import { NumbersOnlyDirective } from '@shared/directives/numbers-only.directive';
 import { CreditCardNumberDirective } from '@shared/directives/credit-card-number.directive';
+import { ToastService } from '@core/services/toast-service';
+import { CardService } from '../services/card-services';
 import {
-   FormGroup,
-   FormControl,
    ReactiveFormsModule,
    Validators,
+   NonNullableFormBuilder,
 } from '@angular/forms';
 
 @Component({
@@ -53,7 +62,6 @@ import {
                appCardExpiryDirective
                type="text"
                id="expiryDate"
-               name="expiryDate"
                placeholder="MM/YYYY"
                formControlName="expiryDate" />
          </app-form-field>
@@ -69,12 +77,21 @@ import {
          </app-form-field>
       </div>
 
-      <app-button text="Add Card" [customClass]="buttonClass()"></app-button>
+      <app-button
+         text="Add Card"
+         [customClass]="buttonClass()"
+         [isLoading]="isLoading()"></app-button>
    </form>`,
 })
 export class AddCard {
+   isLoading = signal<boolean>(false);
    isGrid = input<boolean>(false);
    isSmallBtn = input<boolean>(false);
+   addCardSuccessEvent = output();
+
+   private fb = inject(NonNullableFormBuilder);
+   private cardService = inject(CardService);
+   toastService = inject(ToastService);
 
    buttonClass = computed(() => {
       const layoutClasses = this.isSmallBtn()
@@ -89,19 +106,38 @@ export class AddCard {
       return gridClasses;
    });
 
-   addCardForm = new FormGroup({
-      cardHolderName: new FormControl('', [Validators.required]),
-      cardNumber: new FormControl('', [Validators.required]),
-      expiryDate: new FormControl('', [Validators.required]),
-      cvv: new FormControl('', [Validators.required]),
+   addCardForm = this.fb.group({
+      cardHolderName: ['', Validators.required],
+      cardNumber: ['', Validators.required],
+      expiryDate: ['', Validators.required],
+      cvv: ['', Validators.required],
+      bankName: ['', Validators.required],
    });
 
-   onSubmit() {
+   async onSubmit() {
       if (this.addCardForm.invalid) {
          this.addCardForm.markAllAsTouched();
          return;
       }
-      console.log(this.addCardForm.value, 'value');
-      console.log(this.addCardForm.controls, 'controls');
+      try {
+         const rawValues = this.addCardForm.getRawValue();
+         this.isLoading.set(true);
+
+         await this.cardService.addCard({
+            cardType: 'Visa',
+            nameOnCard: rawValues.cardHolderName,
+            cardNumber: rawValues.cardNumber,
+            expirationDate: rawValues.expiryDate,
+            bankName: rawValues.bankName,
+         });
+
+         this.toastService.success('Card successfully added!');
+         this.addCardSuccessEvent.emit();
+         this.addCardForm.reset();
+      } catch (error: any) {
+         this.toastService.error(getFirebaseErrMsg(error));
+      } finally {
+         this.isLoading.set(false);
+      }
    }
 }
