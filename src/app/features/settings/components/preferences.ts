@@ -7,7 +7,7 @@ import { Button } from '@shared/ui/button';
    selector: 'app-preferences',
    imports: [ToggleSwitch, Select, Button],
    template: `
-      <div class="sm:grid grid-cols-2 gap-x-7.5">
+      <div class="flex flex-col gap-y-5 sm:grid grid-cols-2 gap-x-7.5">
          <app-select label="Currency" [options]="currencyOptions" />
          <app-select label="Currency" [options]="currencyOptions" />
       </div>

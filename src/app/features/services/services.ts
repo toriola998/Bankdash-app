@@ -19,7 +19,7 @@ import { AnalyticsCard, Analytics } from '@shared/ui/analytics-card';
             <h2 class="page-title mt-5">Bank Services List</h2>
 
             <div class="table-wrapper">
-               <table class="w-[700px] xl:w-full relative -mt-2.5">
+               <table class="w-[1200px] xl:w-full relative -mt-2.5">
                   <thead class="sr-only">
                      <tr>
                         <th class="pl-5"></th>

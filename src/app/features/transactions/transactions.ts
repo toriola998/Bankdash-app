@@ -49,14 +49,15 @@ import { AddCard } from './components/add-card';
             <h2 class="page-title my-5">Recent Transactions</h2>
 
             <app-recent-transaction-table></app-recent-transaction-table>
-            <pagination-controls
-               (pageChange)="p = $event"></pagination-controls>
+            <!-- <pagination-controls
+               (pageChange)="p = $event"></pagination-controls> -->
          </section>
 
          @if (modal.isOpen()) {
             <app-modal
                title="Add Card"
                subText="Enter the details of your card"
+               customClass="w-full sm:max-w-[450px]"
                (closeModal)="modal.close()">
                <app-add-card
                   (addCardSuccessEvent)="modal.close()"></app-add-card>
