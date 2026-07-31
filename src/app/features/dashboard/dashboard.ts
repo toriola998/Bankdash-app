@@ -18,7 +18,7 @@ import { RouterLink } from '@angular/router';
       ExpenseStatistics,
       BalanceHistory,
       QuickTransfer,
-      RouterLink
+      RouterLink,
    ],
    template: `<app-page-layout title="Dashboard">
       <div class="flex flex-col xl:grid grid-cols-[65%_auto] gap-8">

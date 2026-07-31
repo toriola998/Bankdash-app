@@ -4,8 +4,7 @@ import { FormField } from '@shared/ui/form-field';
 import { getFirebaseErrMsg } from '@shared/utils/firebase-error';
 import { AuthLayout, AuthCta } from '@core/layouts/auth-layout';
 import {
-   FormGroup,
-   FormControl,
+   NonNullableFormBuilder,
    ReactiveFormsModule,
    Validators,
 } from '@angular/forms';
@@ -72,26 +71,14 @@ export class SignUp {
    toastService = inject(ToastService);
 
    private router = inject(Router);
+   private fb = inject(NonNullableFormBuilder);
    isLoading = signal<boolean>(false);
 
-   signupForm = new FormGroup({
-      firstName: new FormControl('', {
-         nonNullable: true,
-         validators: [Validators.required],
-      }),
-
-      lastName: new FormControl('', {
-         nonNullable: true,
-         validators: [Validators.required],
-      }),
-      email: new FormControl('', {
-         nonNullable: true,
-         validators: [Validators.required, Validators.email],
-      }),
-      password: new FormControl('', {
-         nonNullable: true,
-         validators: [Validators.required, Validators.minLength(6)],
-      }),
+   signupForm = this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
    });
 
    async onSubmit() {

@@ -7,8 +7,7 @@ import { ToastService } from '@core/services/toast-service';
 import { getFirebaseErrMsg } from '@shared/utils/firebase-error';
 import { Router } from '@angular/router';
 import {
-   FormGroup,
-   FormControl,
+   NonNullableFormBuilder,
    ReactiveFormsModule,
    Validators,
 } from '@angular/forms';
@@ -51,17 +50,12 @@ export class Login {
    toastService = inject(ToastService);
 
    private router = inject(Router);
+   private fb = inject(NonNullableFormBuilder);
    isLoading = signal<boolean>(false);
 
-   loginForm = new FormGroup({
-      email: new FormControl('', {
-         nonNullable: true,
-         validators: [Validators.required, Validators.email],
-      }),
-      password: new FormControl('', {
-         nonNullable: true,
-         validators: [Validators.required, Validators.minLength(6)],
-      }),
+   loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
    });
 
    async onSubmit() {
