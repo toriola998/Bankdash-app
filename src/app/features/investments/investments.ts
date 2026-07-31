@@ -17,7 +17,7 @@ import { TrendingStock } from './components/trending-stock';
       TrendingStock,
    ],
    template: `
-      <app-page-layout>
+      <app-page-layout title="Investments">
          <div class="flex flex-col gap-7.5 sm:grid grid-cols-2 lg:grid-cols-3">
             @for (item of accountanalytics; track item.id) {
                <app-analytics-card [analytics]="item"></app-analytics-card>

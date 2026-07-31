@@ -17,7 +17,7 @@ import { CardsExpenseStatistics } from './components/cards-expense-statistics';
       CardsExpenseStatistics,
    ],
    template: `
-      <app-page-layout>
+      <app-page-layout title="Dashboard">
          <div>
             <h2 class="page-title mb-5">My Cards</h2>
 

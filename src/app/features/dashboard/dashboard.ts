@@ -6,6 +6,7 @@ import { WeeklyActivities } from './components/weekly-activities';
 import { ExpenseStatistics } from './components/expense-statistics';
 import { BalanceHistory } from './components/balance-history';
 import { QuickTransfer } from './components/quick-transfer/quick-transfer';
+import { RouterLink } from '@angular/router';
 
 @Component({
    selector: 'app-dashboard',
@@ -17,13 +18,14 @@ import { QuickTransfer } from './components/quick-transfer/quick-transfer';
       ExpenseStatistics,
       BalanceHistory,
       QuickTransfer,
+      RouterLink
    ],
-   template: ` <app-page-layout title="Dashboard">
+   template: `<app-page-layout title="Dashboard">
       <div class="flex flex-col xl:grid grid-cols-[65%_auto] gap-8">
          <div>
             <div class="flex-between mb-5 font-semibold text-black-3">
                <h2 class="page-title">My Cards</h2>
-               <a href="" class="">See All</a>
+               <a routerLink="/cards" class="">See All</a>
             </div>
 
             <div class="flex flex-col md:grid grid-cols-2 gap-8">

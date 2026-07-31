@@ -9,7 +9,7 @@ import { Security } from './components/security';
    selector: 'app-settings',
    imports: [PageLayout, TabsComponent, EditProfile, Preferences, Security],
    template: `
-      <app-page-layout>
+      <app-page-layout title="Settings">
          <div class="card p-4 sm:p-8">
             <app-tabs>
                <div edit-profile>
