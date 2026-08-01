@@ -5,7 +5,7 @@ import { FormControl } from '@angular/forms';
    selector: 'app-form-field',
    standalone: true,
    template: `
-      <div class="mb-5">
+      <div class="mb-5 relative">
          <label
             class="transition-colors"
             [class.error-label]="control().touched && control().invalid"

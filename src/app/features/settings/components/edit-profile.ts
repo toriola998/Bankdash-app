@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { Button } from '@shared/ui/button';
 import { FormField } from '@shared/ui/form-field';
 import { NumbersOnlyDirective } from '@shared/directives/numbers-only.directive';
+import { PasswordToggle } from '@shared/ui/password-toggle';
 import {
    FormGroup,
    FormControl,
@@ -12,7 +13,14 @@ import { PhotoUpload } from './photo-upload';
 
 @Component({
    selector: 'app-edit-profile',
-   imports: [Button, ReactiveFormsModule, FormField, PhotoUpload],
+   imports: [
+      Button,
+      ReactiveFormsModule,
+      FormField,
+      PhotoUpload,
+      NumbersOnlyDirective,
+      PasswordToggle,
+   ],
    template: `
       <div class="lg:grid grid-cols-[130px_auto] lg:gap-x-5 xl:gap-x-14">
          <app-photo-upload></app-photo-upload>
@@ -51,9 +59,13 @@ import { PhotoUpload } from './photo-upload';
                   [control]="editProfileForm.controls.password">
                   <input
                      id="password"
-                     type="password"
+                     [type]="showPassword() ? 'text' : 'password'"
                      formControlName="password"
                      placeholder="@Password@123" />
+                  <app-password-toggle
+                     [showPassword]="showPassword()"
+                     (toggle)="togglePassword()">
+                  </app-password-toggle>
                </app-form-field>
 
                <app-form-field
@@ -83,6 +95,7 @@ import { PhotoUpload } from './photo-upload';
                      placeholder="New York" />
                </app-form-field>
                <app-form-field
+                  appNumbersOnly
                   label="Postal Code"
                   [control]="editProfileForm.controls.postalCode">
                   <input
@@ -123,5 +136,10 @@ export class EditProfile {
       }
       console.log(this.editProfileForm.value, 'value');
       console.log(this.editProfileForm.controls, 'controls');
+   }
+
+   showPassword = signal(false);
+   togglePassword() {
+      this.showPassword.update(value => !value);
    }
 }

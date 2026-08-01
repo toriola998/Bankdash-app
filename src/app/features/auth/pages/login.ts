@@ -5,6 +5,7 @@ import { AuthLayout, AuthCta } from '@core/layouts/auth-layout';
 import { AuthService } from '../services/auth-service';
 import { ToastService } from '@core/services/toast-service';
 import { getFirebaseErrMsg } from '@shared/utils/firebase-error';
+import { PasswordToggle } from '@shared/ui/password-toggle';
 import { Router } from '@angular/router';
 import {
    NonNullableFormBuilder,
@@ -14,7 +15,13 @@ import {
 
 @Component({
    selector: 'app-login',
-   imports: [Button, AuthLayout, ReactiveFormsModule, FormField],
+   imports: [
+      Button,
+      AuthLayout,
+      ReactiveFormsModule,
+      FormField,
+      PasswordToggle,
+   ],
    template: `
       <auth-layout title="Login" [cta]="signUpCta">
          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
@@ -31,9 +38,13 @@ import {
                [control]="loginForm.controls.password">
                <input
                   id="password"
-                  type="password"
+                  [type]="showPassword() ? 'text' : 'password'"
                   formControlName="password"
                   placeholder="@Password@123" />
+               <app-password-toggle
+                  [showPassword]="showPassword()"
+                  (toggle)="togglePassword()">
+               </app-password-toggle>
             </app-form-field>
 
             <app-button
@@ -74,6 +85,11 @@ export class Login {
       } finally {
          this.isLoading.set(false);
       }
+   }
+
+   showPassword = signal(false);
+   togglePassword() {
+      this.showPassword.update(value => !value);
    }
 
    signUpCta: AuthCta = {
