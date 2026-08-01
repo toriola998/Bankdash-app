@@ -2,6 +2,19 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.19.
 
+## Demo Account
+
+To quickly explore the application, use the demo account below instead of signing up.
+
+- **Email:** `faaedah@gmail.com`
+- **Password:** `Admin@1234`
+
+**Note:** Note: For now, all users see the same data. User-specific data is coming in a future update.
+
+## Live Demo
+
+Check out the live app here: [BankDash](https://bankdash-app.netlify.app/)
+
 ## Development server
 
 To start a local development server, run:
