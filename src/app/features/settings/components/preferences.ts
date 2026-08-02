@@ -9,7 +9,7 @@ import { Button } from '@shared/ui/button';
    template: `
       <div class="flex flex-col gap-y-5 sm:grid grid-cols-2 gap-x-7.5">
          <app-select label="Currency" [options]="currencyOptions" />
-         <app-select label="Currency" [options]="currencyOptions" />
+         <app-select label="Timezone" [options]="timezoneOptions" />
       </div>
 
       <p class="text-black-5 font-medium mb-4.5 mt-6.5">Notification</p>
@@ -40,6 +40,12 @@ export class Preferences {
       {
          label: 'USD',
          value: 'USD',
+      },
+   ];
+   timezoneOptions = [
+      {
+         label: '(GMT-12:00) International Date Line West',
+         value: 'GMT',
       },
    ];
 }
