@@ -18,7 +18,9 @@ export class ToastService {
          style: {
             background,
             padding: '18px',
+            color: '#fff',
             'border-radius': '4px',
+            width: 'fit-content',
             'box-shadow':
                '0 1px 10px 0 rgb(0, 0, 0, 0.1), 0 2px 15px 0 rgb(0, 0, 0, 0.05)',
          },
