@@ -21,7 +21,8 @@ import { CardsExpenseStatistics } from './components/cards-expense-statistics';
          <div>
             <h2 class="page-title mb-5">My Cards</h2>
 
-            <div class="flex flex-col md:grid xl:grid-cols-3 gap-8">
+            <div
+               class="flex flex-col md:grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
                <app-card-details
                   variant="light-blue"
                   [cardDetails]="cardDetails"></app-card-details>

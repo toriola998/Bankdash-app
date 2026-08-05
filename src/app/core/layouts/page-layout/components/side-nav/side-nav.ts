@@ -7,7 +7,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
    template: `
       <nav>
          <div
-            class="bg-white min-h-screen fixed w-[258px] lg:w-[248px] z-[90] hidden lg:!block side-nav py-6 border-r border-grey-7"
+            class="bg-white min-h-screen fixed w-[258px] lg:w-[248px] z-90 hidden lg:block! side-nav py-6 border-r border-grey-7"
             [class.open]="toggleNavBar()">
             <!-- <a routerLink="/" class="inline-flex mb-20 logo px-4"> BANKIFY </a> -->
 

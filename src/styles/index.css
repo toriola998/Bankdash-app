@@ -3,6 +3,7 @@
 
 @theme {
    --breakpoint-500: 500px;
+   --breakpoint-xl: 1400px;
    --color-white-glass: #ffffff99;
    --color-black-glass: #00000040;
    --color-black-glass-2: #2c2a2a4a;

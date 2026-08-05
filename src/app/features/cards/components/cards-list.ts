@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
    selector: 'app-cards-list',
    template: `
       <div class="table-wrapper">
-         <table class="w-[700px] xl:w-full relative -mt-2.5">
+         <table class="w-[1000px] xl:w-full relative -mt-2.5">
             <thead class="sr-only">
                <tr>
                   <th class="pl-5"></th>

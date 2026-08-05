@@ -7,7 +7,7 @@ import { AnalyticsCard, Analytics } from '@shared/ui/analytics-card';
    imports: [PageLayout, AnalyticsCard],
    template: `
       <app-page-layout title="Services">
-         <div class="flex flex-col gap-7.5 sm:grid grid-cols-2 lg:grid-cols-3">
+         <div class="flex flex-col gap-7.5 sm:grid grid-cols-2 xl:grid-cols-3">
             @for (item of loanAnalytics; track item.id) {
                <app-analytics-card
                   [analytics]="item"
